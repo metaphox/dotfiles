@@ -1,4 +1,4 @@
-"most of this awesome vimrc file was shamelessly copied from Riobard (
+"most part of this awesome vimrc file was shamelessly copied from Riobard (
 "github.com/riobard
 set nocompatible               " be iMproved
 filetype off                   " required!
@@ -25,13 +25,14 @@ Bundle 'riobard/scala.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'scrooloose/syntastic'
 Bundle 'jpalardy/vim-slime'
+Bundle 'altercation/vim-colors-solarized'
 
 " Vim-scripts repos
 Bundle 'surround.vim'
 Bundle 'matchit.zip'
 Bundle 'nginx.vim'
 Bundle 'cocoa.vim'
-Bundle 'Solarized'
+"Bundle 'Solarized' "using the altercation repo on github (see above)
 Bundle 'applescript.vim'
 Bundle 'httplog'
 Bundle 'taglist.vim'
@@ -142,14 +143,10 @@ let mapleader = ","
 " handled more formally. 
 
 
-
-
 " Keep a longer history By default, Vim only remembers the last 20 commands
 " and search patterns entered. It’s nice to boost this up:
 set history=1000
 set undolevels=1000      " use many levels of undo
-
-
 
 
 " Set the terminal title.  A running gvim will always have a window title, but
@@ -201,9 +198,6 @@ set ruler
 " Now in the bottom right corner of the status line there will be something 
 " like: 529, 35 68%, representing line 529, column 35, about 68% of the way to
 " the end. 
-
-set relativenumber
-
 
 
 " Stifle many interruptive prompts: The “Press ENTER or type command to
@@ -389,3 +383,19 @@ if &term =~ "xterm.*"
     cmap <Esc>[201~ <nop>
 endif
 
+"quick toggle absolute and relative line number
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+"Go all line number craziness
+set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
