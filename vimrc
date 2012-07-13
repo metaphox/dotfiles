@@ -26,6 +26,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'scrooloose/syntastic'
 Bundle 'jpalardy/vim-slime'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/ctrlp.vim'
 
 " Vim-scripts repos
 Bundle 'surround.vim'
@@ -58,10 +59,25 @@ cmap w!! w !sudo tee % >/dev/null
 " clear search highlights easily
 nmap <silent> ,/ :let @/=""<CR>
 
+" shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+" Use these symbols for tab and EOL
+set listchars=tab:▸\ ,eol:¬
+
+" Invisible char colours
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
 
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
+
+" set tab gleich wie soft tab gleich wie shiftwidth
+set ts=4 sts=4 sw=4 noexpandtab
+" c.f. Stab for a quick setting function
+
 
 " Use OS X clipboard
 set clipboard=unnamed
@@ -399,3 +415,33 @@ nnoremap <C-n> :call NumberToggle()<cr>
 set relativenumber
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
+
+
+" Set tabstop, softtabstop and shiftwidth to the same value
+command! -nargs=* Stab call Stab()
+function! Stab()
+  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+  if l:tabstop > 0
+    let &l:sts = l:tabstop
+    let &l:ts = l:tabstop
+    let &l:sw = l:tabstop
+  endif
+  call SummarizeTabs()
+endfunction
+  
+function! SummarizeTabs()
+  try
+    echohl ModeMsg
+    echon 'tabstop='.&l:ts
+    echon ' shiftwidth='.&l:sw
+    echon ' softtabstop='.&l:sts
+    if &l:et
+      echon ' expandtab'
+    else
+      echon ' noexpandtab'
+    endif
+  finally
+    echohl None
+  endtry
+endfunction
+
