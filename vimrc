@@ -11,32 +11,29 @@ call vundle#rc()
 
 " GitHub repos
 Bundle 'gmarik/vundle'
-Bundle 'Townk/vim-autoclose'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-fugitive'
-Bundle 'riobard/vim-cute-python'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'tpope/vim-haml'
-Bundle 'adimit/prolog.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/nerdtree'
-Bundle 'riobard/scala.vim'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'scrooloose/syntastic'
-Bundle 'jpalardy/vim-slime'
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'Townk/vim-autoclose' "auto close () [] etc
+Bundle 'tpope/vim-repeat' "remaps . in a way that plugins can tap into it.
+Bundle 'tpope/vim-haml' "Vim runtime files for Haml, Sass, and SCSS
+Bundle 'kchmck/vim-coffee-script' "adds CoffeeScript support to the vim
+Bundle 'godlygeek/tabular' "line up text by character
+Bundle 'scrooloose/nerdtree' "FS browser
+Bundle 'plasticboy/vim-markdown' "Markdown support
+Bundle 'scrooloose/syntastic' "syntax checking
+Bundle 'jpalardy/vim-slime' "Grab some text and "send" it to a GNU Screen / tmux session.
+
+"Bundle 'riobard/vim-cute-python' " Rio's black magic with python keywords
+"Bundle 'riobard/scala.vim' "scala support
+"Bundle 'altercation/vim-colors-solarized' "not that good on putty.
+"Bundle 'tpope/vim-fugitive' "Git wrapper... maybe use this when you are fluent with git cli
 
 " Vim-scripts repos
-Bundle 'surround.vim'
-Bundle 'matchit.zip'
-Bundle 'nginx.vim'
-Bundle 'cocoa.vim'
-"Bundle 'Solarized' "using the altercation repo on github (see above)
-Bundle 'applescript.vim'
+Bundle 'surround.vim' "surroundings editing, http://www.vim.org/scripts/script.php?script_id=1697
+Bundle 'matchit.zip' "configure % to match more than just single characters
+Bundle 'nginx.vim' "highlights configuration files for nginx
+Bundle 'cocoa.vim' "plugin for Cocoa/Objective-C
+Bundle 'applescript.vim' "plugin for applescript
 Bundle 'httplog'
-Bundle 'taglist.vim'
-Bundle 'DrawIt'
+Bundle 'taglist.vim' "needs ctags
 
 
 " Go-lang support
