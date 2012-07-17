@@ -11,29 +11,50 @@ call vundle#rc()
 
 " GitHub repos
 Bundle 'gmarik/vundle'
-Bundle 'Townk/vim-autoclose' "auto close () [] etc
-Bundle 'tpope/vim-repeat' "remaps . in a way that plugins can tap into it.
-Bundle 'tpope/vim-haml' "Vim runtime files for Haml, Sass, and SCSS
-Bundle 'kchmck/vim-coffee-script' "adds CoffeeScript support to the vim
-Bundle 'godlygeek/tabular' "line up text by character
-Bundle 'scrooloose/nerdtree' "FS browser
-Bundle 'plasticboy/vim-markdown' "Markdown support
-Bundle 'scrooloose/syntastic' "syntax checking
-Bundle 'jpalardy/vim-slime' "Grab some text and "send" it to a GNU Screen / tmux session.
+"auto close () [] etc
+Bundle 'Townk/vim-autoclose'
+"remaps . in a way that plugins can tap into it.
+Bundle 'tpope/vim-repeat' 
+"Vim runtime files for Haml, Sass, and SCSS
+Bundle 'tpope/vim-haml' 
+"adds CoffeeScript support to the vim
+Bundle 'kchmck/vim-coffee-script' 
+"line up text by character
+Bundle 'godlygeek/tabular' 
+"FS browser
+Bundle 'scrooloose/nerdtree' 
+"Markdown support
+Bundle 'plasticboy/vim-markdown' 
+"syntax checking
+Bundle 'scrooloose/syntastic' 
+"Grab some text and send it to a GNU Screen / tmux session.
+Bundle 'jpalardy/vim-slime' 
 
-"Bundle 'riobard/vim-cute-python' " Rio's black magic with python keywords
-"Bundle 'riobard/scala.vim' "scala support
-"Bundle 'altercation/vim-colors-solarized' "not that good on putty.
-"Bundle 'tpope/vim-fugitive' "Git wrapper... maybe use this when you are fluent with git cli
+Bundle 'wincent/command-t'
+
+"Rio's black magic with python keywords
+"Bundle 'riobard/vim-cute-python' 
+"scala support
+"Bundle 'riobard/scala.vim' 
+"not that good on putty tho
+"Bundle 'altercation/vim-colors-solarized' 
+"Git wrapper...
+Bundle 'tpope/vim-fugitive' 
 
 " Vim-scripts repos
-Bundle 'surround.vim' "surroundings editing, http://www.vim.org/scripts/script.php?script_id=1697
-Bundle 'matchit.zip' "configure % to match more than just single characters
-Bundle 'nginx.vim' "highlights configuration files for nginx
-Bundle 'cocoa.vim' "plugin for Cocoa/Objective-C
-Bundle 'applescript.vim' "plugin for applescript
+""surroundings editing, http://www.vim.org/scripts/script.php?script_id=1697
+Bundle 'surround.vim' 
+"configure % to match more than just single characters
+Bundle 'matchit.zip' 
+"highlights configuration files for nginx
+Bundle 'nginx.vim' 
+"plugin for Cocoa/Objective-C
+Bundle 'cocoa.vim' 
+"plugin for applescript
+Bundle 'applescript.vim' 
 Bundle 'httplog'
-Bundle 'taglist.vim' "needs ctags
+"needs ctags
+Bundle 'taglist.vim' 
 
 
 " Go-lang support
@@ -75,9 +96,6 @@ set ts=4 sts=4 sw=4 noexpandtab
 " c.f. Stab for a quick setting function
 
 
-" Use OS X clipboard
-set clipboard=unnamed
-
 " speed up Vim command typing by using ; (no shift key) as : (=shift+;)
 nnoremap ; :
 
@@ -91,6 +109,7 @@ set visualbell noerrorbells
 " Read modelines
 set modeline modelines=5
 
+set background=dark
 " Hightlight cursor position
 set cursorline  "cursorcolumn
 
@@ -109,9 +128,6 @@ set fileformat=unix fileformats=unix,dos,mac
 set showmatch     " set show matching parenthesis
 
 syntax enable
-set t_Co=256    " Use 256 colors to display correctly in console
-set background=dark
-colo solarized
 
 set fo+=m   " break lines at multibyte chars (for asian chars)
 set fo+=M   " do not insert a space before/after multibyte char when joining
@@ -214,11 +230,15 @@ set incsearch   " incremental search (search as you type)
 set hlsearch    " highlight search result
 
 
+" Put syntastic into passive mode by default
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': ['ruby'],
+                            \ 'passive_filetypes':  ['php'] }
+
 
 " OS X default ctags version is too old
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 let Tlist_Use_Split_Window = 1
-map <leader>t :NERDTree\|TlistToggle<CR>
 com TT NERDTree | TlistToggle
 
 " Trigger tag auto hightlight every second. Note this is done by writing swap
