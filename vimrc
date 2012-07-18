@@ -7,62 +7,66 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 
 " GitHub repos
 Bundle 'gmarik/vundle'
 "auto close () [] etc
 Bundle 'Townk/vim-autoclose'
 "remaps . in a way that plugins can tap into it.
-Bundle 'tpope/vim-repeat' 
+Bundle 'tpope/vim-repeat'
 "Vim runtime files for Haml, Sass, and SCSS
-Bundle 'tpope/vim-haml' 
+Bundle 'tpope/vim-haml'
 "adds CoffeeScript support to the vim
-Bundle 'kchmck/vim-coffee-script' 
+Bundle 'kchmck/vim-coffee-script'
 "line up text by character
-Bundle 'godlygeek/tabular' 
+Bundle 'godlygeek/tabular'
 "FS browser
-Bundle 'scrooloose/nerdtree' 
+Bundle 'scrooloose/nerdtree'
 "Markdown support
-Bundle 'plasticboy/vim-markdown' 
+Bundle 'plasticboy/vim-markdown'
 "syntax checking
-Bundle 'scrooloose/syntastic' 
+Bundle 'scrooloose/syntastic'
 "Grab some text and send it to a GNU Screen / tmux session.
-Bundle 'jpalardy/vim-slime' 
+Bundle 'jpalardy/vim-slime'
 
 Bundle 'wincent/command-t'
 
 "Rio's black magic with python keywords
-"Bundle 'riobard/vim-cute-python' 
+"Bundle 'riobard/vim-cute-python'
 "scala support
-"Bundle 'riobard/scala.vim' 
+"Bundle 'riobard/scala.vim'
 "not that good on putty tho
-"Bundle 'altercation/vim-colors-solarized' 
+Bundle 'altercation/vim-colors-solarized'
 "Git wrapper...
-Bundle 'tpope/vim-fugitive' 
+Bundle 'tpope/vim-fugitive'
 
 " Vim-scripts repos
 ""surroundings editing, http://www.vim.org/scripts/script.php?script_id=1697
-Bundle 'surround.vim' 
+Bundle 'surround.vim'
 "configure % to match more than just single characters
-Bundle 'matchit.zip' 
+Bundle 'matchit.zip'
 "highlights configuration files for nginx
-Bundle 'nginx.vim' 
+Bundle 'nginx.vim'
 "plugin for Cocoa/Objective-C
-Bundle 'cocoa.vim' 
+Bundle 'cocoa.vim'
 "plugin for applescript
-Bundle 'applescript.vim' 
+Bundle 'applescript.vim'
 Bundle 'httplog'
 "needs ctags
-Bundle 'taglist.vim' 
+Bundle 'taglist.vim'
 
+
+set t_Co=256
+set background=dark
+colo solarized
 
 " Go-lang support
 if !empty($GOROOT)
     set rtp+=$GOROOT/misc/vim
 endif
 
-filetype plugin indent on   " required by Vundle
+filetype plugin indent on " required by Vundle
 
 
 "let g:AutoCloseProtectedRegions = []
@@ -76,15 +80,6 @@ cmap w!! w !sudo tee % >/dev/null
 " clear search highlights easily
 nmap <silent> ,/ :let @/=""<CR>
 
-" shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-
-" Use these symbols for tab and EOL
-set listchars=tab:▸\ ,eol:¬
-
-" Invisible char colours
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
 
 
 " Use Q for formatting the current paragraph (or selection)
@@ -102,7 +97,7 @@ nnoremap ; :
 set wildignore=*.swp,*.bak,*.pyc,*.class " ignore some file extensions when completing names by pressing Tab
 set title                " change the terminal's titl
 
-" Silent mode. No beeping. 
+" Silent mode. No beeping.
 set visualbell noerrorbells
 
 
@@ -158,7 +153,14 @@ nnoremap ` '
 let mapleader = ","
 " <SPACE> is also a good choice. Note: you can of course have several “
 " personal modifier keys” simply by mapping a sequence, but the leader key is
-" handled more formally. 
+" handled more formally.
+
+" shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+" Use these symbols for tab and EOL
+" set listchars=tab:▸\ ,trail:·,eol:¶
+set listchars=tab:⇥\ ,trail:␣,eol:↩,nbsp:␣,extends:…,precedes:…
 
 
 " Keep a longer history By default, Vim only remembers the last 20 commands
@@ -169,7 +171,7 @@ set undolevels=1000      " use many levels of undo
 
 " Set the terminal title.  A running gvim will always have a window title, but
 " when vim is run within an xterm, by default it inherits the terminal’s
-" current title.  This gives e.g. | page.html (~) - VIM |. 
+" current title.  This gives e.g. | page.html (~) - VIM |.
 set title
 
 
@@ -205,17 +207,17 @@ set smartcase   " ignore case if search pattern is all lowercase,
 " border, keeping more context around where you’re working.
 set scrolloff=3
 " Typing zz is also handy; it centers the window on the cursor without moving
-" the cursor. (But watch out for ZZ!) 
+" the cursor. (But watch out for ZZ!)
 
 
 
 " Enable limited line numbering
-" It’s often useful to know where you are in a buffer, but full line 
+" It’s often useful to know where you are in a buffer, but full line
 " numbering is distracting. Setting the option below is a good compromise:
 set ruler
-" Now in the bottom right corner of the status line there will be something 
+" Now in the bottom right corner of the status line there will be something
 " like: 529, 35 68%, representing line 529, column 35, about 68% of the way to
-" the end. 
+" the end.
 
 
 " Stifle many interruptive prompts: The “Press ENTER or type command to
@@ -223,7 +225,7 @@ set ruler
 " command-line text and other info tokens with, e.g.:
 set shortmess=atI
 " See :help shortmess for the breakdown of what this changes. You can also
-" pare things down further if you like. 
+" pare things down further if you like.
 
 
 set incsearch   " incremental search (search as you type)
@@ -243,7 +245,7 @@ com TT NERDTree | TlistToggle
 
 " Trigger tag auto hightlight every second. Note this is done by writing swap
 " file to trigger the CursorHold event. Low values will incur more disk I/O.
-set updatetime=1000 
+set updatetime=1000
 
 autocmd FileType nerdtree setlocal norelativenumber
 autocmd FileType taglist  setlocal norelativenumber
@@ -277,7 +279,7 @@ nmap <D-0> g0
 "map <C-l> <C-w>l
 
 " Option key as prefix. NOTE: iTerm 2 sends Option key as +Esc. Meta doesn't
-" work properly. 
+" work properly.
 map <Esc>j <C-w>j
 map <Esc>k <C-w>k
 map <Esc>h <C-w>h
@@ -434,7 +436,7 @@ function! Stab()
   endif
   call SummarizeTabs()
 endfunction
-  
+
 function! SummarizeTabs()
   try
     echohl ModeMsg
@@ -451,3 +453,15 @@ function! SummarizeTabs()
   endtry
 endfunction
 
+
+" Invisible char colours
+highlight NonText ctermfg=0 guifg=#4a4a59
+highlight SpecialKey ctermfg=0 guifg=#4a4a59
+" highlight group for whitespace highlighting
+" 234 = 1c1c1c
+" highlight ExtraWhitespace ctermbg=10 guibg=darkblue
+" match ExtraWhitespace /\s\+$/
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
