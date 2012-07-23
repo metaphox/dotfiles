@@ -35,6 +35,19 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/bin:/Users/metaphox/bin:/Users/metaphox/.rvm/bin:/Users/metaphox/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+export PATH=/usr/local/sbin:/usr/local/bin:~/bin:~/.rvm/bin:~/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X13/bin #:$PATH
+
+export LYNX_CFG=~/.lynx.cfg
+
+# hide virtual env current workon, show in theme
+export VIRTUAL_ENV_DISABLE_PROMPT='true'
+
+# use python 2.7
+workon 2.7
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
+# use ruby 1.9.2
+rvm use 1.9.2
+
+

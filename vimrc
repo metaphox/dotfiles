@@ -29,8 +29,8 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'scrooloose/syntastic'
 "Grab some text and send it to a GNU Screen / tmux session.
 Bundle 'jpalardy/vim-slime'
-
-Bundle 'wincent/command-t'
+"quick edit file
+Bundle 'metaphox/Command-T'
 
 "Rio's black magic with python keywords
 "Bundle 'riobard/vim-cute-python'
@@ -38,6 +38,12 @@ Bundle 'wincent/command-t'
 "Bundle 'riobard/scala.vim'
 "not that good on putty tho
 Bundle 'altercation/vim-colors-solarized'
+
+"good looking status bar
+Bundle 'Lokaltog/vim-powerline'
+" let g:Powerline_symbols = 'unicode'
+" let g:Powerline_stl_path_style='short'
+
 "Git wrapper...
 Bundle 'tpope/vim-fugitive'
 
@@ -52,6 +58,13 @@ Bundle 'nginx.vim'
 Bundle 'cocoa.vim'
 "plugin for applescript
 Bundle 'applescript.vim'
+
+"python auto complete
+Bundle 'pythoncomplete'
+
+"remember to set the g:pydiction_location
+Bundle 'Pydiction'
+
 Bundle 'httplog'
 "needs ctags
 Bundle 'taglist.vim'
@@ -68,11 +81,6 @@ endif
 
 filetype plugin indent on " required by Vundle
 
-
-"let g:AutoCloseProtectedRegions = []
-"let g:AutoCloseProtectedRegions = ["Comment", "String", "Character"]
-
-
 " Shortcuts
 "  use w!! to 'sudo' save after you opened the file without 'sudo' first
 cmap w!! w !sudo tee % >/dev/null
@@ -80,7 +88,7 @@ cmap w!! w !sudo tee % >/dev/null
 " clear search highlights easily
 nmap <silent> ,/ :let @/=""<CR>
 
-
+let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
 
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
@@ -110,7 +118,7 @@ set cursorline  "cursorcolumn
 
 "set laststatus=2 statusline=%F%m%r%h%w%y%=[%l,%c][%P/%L]
 set laststatus=2    " always show the status line
-set statusline=%{fugitive#statusline()}\ %<%F\ %y%h%m%r%=%-14.(%l,%c%V%)\ [%P/%L]
+"set statusline=%{fugitive#statusline()}\ %<%F\ %y%h%m%r%=%-14.(%l,%c%V%)\ [%P/%L]
 set titlestring=%<%F
 
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab shiftround
