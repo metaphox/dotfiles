@@ -44,13 +44,7 @@ PS2=":>"
 # virtualenv and rvm
 #-------------------
 
-#export VIRTUAL_ENV_DISABLE_PROMPT=true
-. /usr/local/share/python/virtualenvwrapper.sh
-
-#might not need this for a fresh re-install
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:\
-/Library/Python/2.7/site-packages:${PYTHONPATH}
-workon 27
+[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 rvm use 1.9.2
@@ -73,3 +67,4 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
+export LANG=en_US.UTF-8
