@@ -15,3 +15,5 @@
 	trustExitCode = true
 [github]
 	user = metaphox
+[push]
+	default = matching
