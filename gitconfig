@@ -4,7 +4,7 @@
 [color]
 	ui = true
 [core]
-	excludesfile = /Users/metaphox/.gitignore_global
+	excludesfile = /Users/taowu/.gitignore_global
 	editor = /usr/bin/vim
 	pager = less -r
 [difftool "sourcetree"]
