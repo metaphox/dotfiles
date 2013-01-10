@@ -47,7 +47,7 @@ PS2=":>"
 [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-rvm use 1.9.3
+rvm use 1.9.2
 
 #-------------------
 # Misc
