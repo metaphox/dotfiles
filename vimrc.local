@@ -1,3 +1,6 @@
+"solarized is buggy under OS X + iTerm 2
+let g:solarized_termcolors=0
+set background=dark
 " black magic... yeah esc key is too far away
 inoremap jj <ESC>
 " so i dont need to press shift
