@@ -1,4 +1,4 @@
-"solarized is buggy under OS X + iTerm 2
+" fix solarized on OS X
 let g:solarized_termcolors=0
 set background=dark
 " black magic... yeah esc key is too far away
