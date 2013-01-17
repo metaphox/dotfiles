@@ -5,9 +5,7 @@ if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
 # Path
 #-------------------
 
-PATH=~/bin:/usr/local/bin:/usr/local/sbin:\
-Applications/Postgres.app/Contents/MacOS/bin:/usr/local/share/npm/bin:\
-$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #-------------------
 # virtualenv and rvm
@@ -16,7 +14,7 @@ $PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-rvm use 1.9.2
+rvm use 1.9.3
 
 #-------------------
 # Misc

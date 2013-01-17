@@ -31,7 +31,8 @@ alias lh='ls -a | egrep "^\."'
 
 PS1="\[\033[1;32m\]\w\[\033[0m \[\033[0m\]\[\033[1;36m\](\h)\
 \$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\[\033[0m\]\n > "
-PS2=":>"
+# PS1="\`powerline-prompt\`>"
+PS2=":> "
 
 
 export LANG=en_US.UTF-8

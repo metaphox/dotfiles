@@ -39,9 +39,9 @@ if has('gui_running')
     set guioptions-=T           " remove the toolbar
     set lines=40                " 40 lines of text instead of 24,
     if has("gui_gtk2")
-        set guifont=Source\ Code\ Pro\ 14,Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
+        set guifont=Source\ Code\ Pro\ for\ Powerline\ 14,Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
     else
-        set guifont=Source\ Code\ Pro:h14,Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+        set guifont=Source\ Code\ Pro\ for\ Powerline:h14,Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
     endif
     if has('gui_macvim')
         set transparency=1          " Make the window slightly transparent
@@ -102,3 +102,6 @@ highlight NonText ctermfg=0 guifg=#4a4a59
 highlight SpecialKey ctermfg=0 guifg=#4a4a59    
 
 set listchars=tab:⇥\ ,trail:␣,eol:↩,nbsp:␣,extends:…,precedes:…
+
+"enable powerline symbol in Unicode (patch font for this)"
+let g:Powerline_symbols='fancy'
