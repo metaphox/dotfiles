@@ -5,7 +5,7 @@
 	ui = true
 [core]
 	excludesfile = /Users/taowu/.gitignore_global
-	editor = /usr/bin/vim
+	editor = /usr/local/bin/vim
 	pager = less -r
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
