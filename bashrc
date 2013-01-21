@@ -31,7 +31,11 @@ alias lh='ls -a | egrep "^\."'
 
 PS1="\[\033[1;32m\]\w\[\033[0m \[\033[0m\]\[\033[1;36m\](\h)\
 \$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\[\033[0m\]\n > "
-# PS1="\`powerline-prompt\`>"
+#function _update_ps1() {
+#   export PS1="$(powerline-prompt)"
+#}
+
+#export PROMPT_COMMAND="_update_ps1"
 PS2=":> "
 
 

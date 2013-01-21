@@ -105,3 +105,9 @@ set listchars=tab:⇥\ ,trail:␣,eol:↩,nbsp:␣,extends:…,precedes:…
 
 "enable powerline symbol in Unicode (patch font for this)"
 let g:Powerline_symbols='fancy'
+
+set mouse-=a
+set clipboard=
+
+"enabling powerline by hand, to be removed once they get it done
+python from powerline.bindings.vim import source_plugin; source_plugin()
