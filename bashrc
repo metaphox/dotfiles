@@ -14,8 +14,8 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias du='du -kh'       # Makes a more readable output.
 
+alias ls='ls -h --color=auto'         # add colors for filetype recognition
 alias l="ls -l"
-alias ls='ls -hG'         # add colors for filetype recognition
 alias ll='ls -Al'          # show hidden files
 alias lk='ls -lSr'         # sort by size, biggest last
 alias lc='ls -ltcr'        # sort by and show change time, most recent last
@@ -129,10 +129,10 @@ if [ $? -eq 0 ]; then \
   else \
     # @5 - Changes to working tree
     echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BYellow$PathShort$Color_Off'\$ "; \
+  fi) '$BYellow$PathShort$Color_Off'\n >"; \
 else \
   # @2 - Prompt when not in GIT repo
-  echo " '$Yellow$PathShort$Color_Off'\$ "; \
+  echo " '$Yellow$PathShort$Color_Off'\n >"; \
 fi)'
 
 #export PROMPT_COMMAND="_update_ps1"
