@@ -14,8 +14,8 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias du='du -kh'       # Makes a more readable output.
 
+alias ls='ls -h --color=auto'         # add colors for filetype recognition
 alias l="ls -l"
-alias ls='ls -hG'         # add colors for filetype recognition
 alias ll='ls -Al'          # show hidden files
 alias lk='ls -lSr'         # sort by size, biggest last
 alias lc='ls -ltcr'        # sort by and show change time, most recent last
@@ -28,7 +28,6 @@ alias lh='ls -a | egrep "^\."'
 #-------------------
 # Prompt
 #-------------------
-
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
 
@@ -142,4 +141,5 @@ PS2=":> "
 
 
 export LANG=en_US.UTF-8
+
 
