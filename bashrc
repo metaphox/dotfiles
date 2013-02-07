@@ -143,3 +143,5 @@ PS2=":> "
 
 export LANG=en_US.UTF-8
 
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
