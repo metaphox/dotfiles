@@ -31,3 +31,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
+export LESSOPEN="| $(brew --prefix)/bin/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
