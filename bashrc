@@ -20,6 +20,7 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias du='du -kh'       # Makes a more readable output.
 
+alias ls='ls -h --color=auto'         # add colors for filetype recognition
 alias l="ls -l"
 
 # add colors for filetype recognition
@@ -43,7 +44,6 @@ alias ldir="ls -lad */"
 #-------------------
 # Prompt
 #-------------------
-
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
 
@@ -157,4 +157,5 @@ PS2=":> "
 
 
 export LANG=en_US.UTF-8
+
 

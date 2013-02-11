@@ -103,8 +103,6 @@ highlight SpecialKey ctermfg=0 guifg=#4a4a59
 
 set listchars=tab:⇥\ ,trail:␣,eol:↩,nbsp:␣,extends:…,precedes:…
 
-"enable powerline symbol in Unicode (patch font for this)"
-let g:Powerline_symbols='fancy'
 
 set mouse-=a
 set clipboard=
