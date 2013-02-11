@@ -1,3 +1,9 @@
+platform='osx'
+unamestr=$(uname)
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+fi
+
 #-------------------
 # Personnal Aliases
 #-------------------
@@ -15,7 +21,14 @@ alias path='echo -e ${PATH//:/\\n}'
 alias du='du -kh'       # Makes a more readable output.
 
 alias l="ls -l"
-alias ls='ls -hG'         # add colors for filetype recognition
+
+# add colors for filetype recognition
+if [[ $platform == 'linux' ]]; then
+	alias ls='ls -h --color=auto'
+else
+	alias ls='ls -hG'
+fi
+
 alias ll='ls -Al'          # show hidden files
 alias lk='ls -lSr'         # sort by size, biggest last
 alias lc='ls -ltcr'        # sort by and show change time, most recent last
@@ -24,6 +37,8 @@ alias lt='ls -ltr'         # sort by date, most recent last
 alias lm='ls -alG | more'    # pipe through 'more'
 alias lr='ls -lR'          # recursive ls
 alias lh='ls -a | egrep "^\."'
+
+alias ldir="ls -lad */"
 
 #-------------------
 # Prompt
