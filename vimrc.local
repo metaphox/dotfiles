@@ -1,18 +1,25 @@
 " fix solarized on OS X
 let g:solarized_termcolors=0
 set background=dark
+
 " black magic... yeah esc key is too far away
 inoremap jj <ESC>
+
 " so i dont need to press shift
 nnoremap ; :
+
 " fast toggle listchars
 nmap <leader>l :set list!<CR>
+
 " long line could be slow sometimes
 set synmaxcol=128
+
 " use fast terminal
 set ttyfast
+
 " avoid scrolling problems
 set lazyredraw
+
 " The following function automatically aligns when typing a
 " supported character
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -32,16 +39,16 @@ endfunction
 set nofoldenable
 
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=black
 
 if has('gui_running')
     set guioptions-=T           " remove the toolbar
     set lines=40                " 40 lines of text instead of 24,
     if has("gui_gtk2")
-        set guifont=Source\ Code\ Pro\ for\ Powerline\ 14,Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
+        set guifont=PragmataPro\ for\ Powerline\ 14,Source\ Code\ Pro\ for\ Powerline\ 14,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
     else
-        set guifont=Source\ Code\ Pro\ for\ Powerline:h14,Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+        set guifont=PragmataPro\ for\ Powerline:h14,Source\ Code\ Pro\ for\ Powerline:h14,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
     endif
     if has('gui_macvim')
         set transparency=1          " Make the window slightly transparent
@@ -99,9 +106,9 @@ endfunction
 
 " Invisible char colours
 highlight NonText ctermfg=0 guifg=#4a4a59
-highlight SpecialKey ctermfg=0 guifg=#4a4a59    
+highlight SpecialKey ctermfg=0 guifg=#4a4a59
 
-set listchars=tab:⇥\ ,trail:␣,eol:↩,nbsp:␣,extends:…,precedes:…
+set listchars=tab:⇥\ ,trail:␣,eol:¬,nbsp:␣,extends:…,precedes:…
 
 
 set mouse-=a
@@ -113,3 +120,4 @@ python from powerline.bindings.vim import source_plugin; source_plugin()
 "disalbe F1
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
+
