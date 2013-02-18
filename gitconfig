@@ -16,4 +16,6 @@
 [github]
 	user = metaphox
 [push]
-	default = matching
+	default = current
+[alias]
+	lcrev = log --reverse --no-merges --stats @{1}..
