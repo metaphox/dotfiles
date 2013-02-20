@@ -11,6 +11,9 @@ nnoremap ; :
 " fast toggle listchars
 nmap <leader>l :set list!<CR>
 
+" fast toggle linewrapping
+nmap <leader>w :set wrap!<CR>
+
 " long line could be slow sometimes
 set synmaxcol=128
 
@@ -114,10 +117,24 @@ set listchars=tab:⇥\ ,trail:␣,eol:¬,nbsp:␣,extends:…,precedes:…
 set mouse-=a
 set clipboard=
 
-"enabling powerline by hand, to be removed once they get it done
-python from powerline.bindings.vim import source_plugin; source_plugin()
+"enabling powerline by hand, to be removed once it is done
+set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 
 "disalbe F1
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
+
+"Emacs-style movement keys for command line
+
+:cnoremap <C-a>  <Home>
+:cnoremap <C-b>  <Left>
+:cnoremap <C-f>  <Right>
+:cnoremap <C-d>  <Delete>
+:cnoremap <M-b>  <S-Left>
+:cnoremap <M-f>  <S-Right>
+:cnoremap <M-d>  <S-right><Delete>
+:cnoremap <Esc>b <S-Left>
+:cnoremap <Esc>f <S-Right>
+:cnoremap <Esc>d <S-right><Delete>
+:cnoremap <C-g>  <C-c>
 
