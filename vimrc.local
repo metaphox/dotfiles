@@ -15,7 +15,7 @@ nmap <leader>l :set list!<CR>
 nmap <leader>w :set wrap!<CR>
 
 " long line could be slow sometimes
-set synmaxcol=128
+set synmaxcol=1024
 
 " use fast terminal
 set ttyfast
@@ -59,7 +59,7 @@ if has('gui_running')
 endif
 
 
-set ts=4 sts=4 sw=4 noexpandtab
+set ts=4 sts=4 sw=4 expandtab
 
 "enable 'bracketed paste mode' in OS X > 10.7
 "http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
@@ -137,4 +137,8 @@ set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 :cnoremap <Esc>f <S-Right>
 :cnoremap <Esc>d <S-right><Delete>
 :cnoremap <C-g>  <C-c>
+
+"disable indent guides by default, turn on with <leader>ig
+let g:indent_guides_enable_on_vim_startup=0
+
 
