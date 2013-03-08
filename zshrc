@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+#need to source this before loading my theme
+source ~/dotfiles/zsh-git-prompt/zshrc.sh
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-source ~/dotfiles/zsh-git-prompt/zshrc.sh
 ZSH_THEME="metaphox"
 
 # Example aliases
@@ -13,7 +15,7 @@ ZSH_THEME="metaphox"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -28,12 +30,12 @@ ZSH_THEME="metaphox"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ruby git jira brew)
+plugins=(ruby git jira brew osx gem mosh)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,5 +92,23 @@ PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 rvm use 1.9.3
 
+#-------------------
+# misc
+#-------------------
+
+#z jump
 source ~/dotfiles/z/z.sh
 
+#less with syntax highlighting
+export LESSOPEN="| $(brew --prefix)/bin/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
+export LANG=en_US.utf-8
+#if you ever wonder why your [esc]b stuff doesn't work under my cli... here is the answer:
+
+bindkey -v
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+#turn off auto correction. l3aRn t0 5p3l1, you dumb.
+unsetopt correct_all
