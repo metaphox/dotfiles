@@ -20,7 +20,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias du='du -kh'       # Makes a more readable output.
 
-alias ls='ls -h --color=auto'         # add colors for filetype recognition
 alias l="ls -l"
 
 # add colors for filetype recognition

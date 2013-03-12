@@ -8,7 +8,7 @@ source ~/dotfiles/zsh-git-prompt/zshrc.sh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="metaphox"
+#ZSH_THEME="metaphox"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -20,7 +20,8 @@ CASE_SENSITIVE="true"
 # Comment this out to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
+# Uncomment to change how many often would you like to wait before auto-updates
+# occur? (in days)
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment following line if you want to disable colors in ls
@@ -29,13 +30,15 @@ CASE_SENSITIVE="true"
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
+# Uncomment following line if you want red dots to be displayed while waiting
+# for completion
 COMPLETION_WAITING_DOTS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load? (plugins can be found in
+# ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ruby git jira brew osx gem mosh)
+plugins=(ruby git rvm jira brew osx gem mosh)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,7 +84,8 @@ alias lh='ls -a | egrep "^\."'
 
 alias ldir="ls -lad */"
 
-PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# Add RVM to PATH for scripting
+PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/.rvm/bin
 
 #-------------------
 # virtualenv and rvm
@@ -104,11 +108,33 @@ export LESSOPEN="| $(brew --prefix)/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 export LANG=en_US.utf-8
-#if you ever wonder why your [esc]b stuff doesn't work under my cli... here is the answer:
 
+#if you ever wonder why your [esc]b stuff doesn't work under my cli...
 bindkey -v
-
-fpath=(/usr/local/share/zsh-completions $fpath)
 
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.
 unsetopt correct_all
+
+PROMPT='%{$fg[grey]%}%D{%H:%M:%S} %{$fg[yellow]%}%~ \
+$fg[$NCOLOR]%(!.#.>)%{$reset_color%}'
+
+local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+RPROMPT='%{$fg[red]%}${${KEYMAP/vicmd/[N]}/(main|viins)/ }%{$reset_color%} \
+${return_code} $(git_super_status) \
+%{$fg[green]%}%n%{$reset_color%}@$my_orange%m%{$reset_color%}%'
+
+function zle-line-init zle-keymap-select {
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# git settings
+ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075]±["
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_DIRTY="$my_orange*%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075]]%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SEPARATOR=""
+
+
