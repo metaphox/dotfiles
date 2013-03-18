@@ -63,8 +63,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias du='du -kh'       # Makes a more readable output.
 
-alias ls='ls -h --color=auto'         # add colors for filetype recognition
-alias l="ls -l"
 
 # add colors for filetype recognition
 if [[ $platform == 'linux' ]]; then
@@ -73,6 +71,7 @@ else
 	alias ls='ls -hG'
 fi
 
+alias l="ls -l"
 alias ll='ls -Al'          # show hidden files
 alias lk='ls -lSr'         # sort by size, biggest last
 alias lc='ls -ltcr'        # sort by and show change time, most recent last
@@ -83,6 +82,12 @@ alias lr='ls -lR'          # recursive ls
 alias lh='ls -a | egrep "^\."'
 
 alias ldir="ls -lad */"
+
+if [[ $platform == 'linux' ]]; then
+    alias lpt="pstree -a | less"
+else
+    alias lpt="pstree | less"
+fi
 
 # Add RVM to PATH for scripting
 PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/.rvm/bin
