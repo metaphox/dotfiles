@@ -66,9 +66,9 @@ alias du='du -kh'       # Makes a more readable output.
 
 # add colors for filetype recognition
 if [[ $platform == 'linux' ]]; then
-	alias ls='ls -h --color=auto'
+	alias ls='ls -hp --color=auto'
 else
-	alias ls='ls -hG'
+	alias ls='ls -hGp'
 fi
 
 alias l="ls -l"
