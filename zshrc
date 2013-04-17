@@ -96,7 +96,8 @@ PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/.rvm/bin
 # virtualenv and rvm
 #-------------------
 
-[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+source /usr/local/bin/virtualenvwrapper.sh
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 rvm use 1.9.3
@@ -143,3 +144,6 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075]]%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
