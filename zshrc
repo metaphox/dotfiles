@@ -90,7 +90,7 @@ else
 fi
 
 # Add RVM to PATH for scripting
-PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/.rvm/bin
+PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/.rvm/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
 #-------------------
 # virtualenv and rvm
@@ -115,7 +115,7 @@ export LESS=' -R '
 
 export LANG=en_US.utf-8
 
-#if you ever wonder why your [esc]b stuff doesn't work under my cli...
+#if you ever wonder why [esc]b stuff doesn't work under my cli...
 bindkey -v
 
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.

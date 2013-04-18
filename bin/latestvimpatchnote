@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl -s ftp://ftp.vim.org/pub/vim/patches/7.3/README | tail -n 3

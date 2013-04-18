@@ -180,6 +180,9 @@ highlight SpecialKey ctermfg=0 guifg=#4a4a59
 
 set listchars=tab:⇥\ ,trail:␣,eol:¬,nbsp:␣,extends:…,precedes:…
 
+" Store swap files in fixed location, not current directory.
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+
 "-------------------------------------------------------------------------------
 " Key Mappings
 "-------------------------------------------------------------------------------
