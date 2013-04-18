@@ -425,6 +425,39 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 " Functions
 "-------------------------------------------------------------------------------
 
+" Initialize directories {
+function! InitializeDirectories()
+    let parent = $HOME
+    let prefix = 'vim'
+    let dir_list = {
+                \ 'backup': 'backupdir',
+                \ 'views': 'viewdir',
+                \ 'swap': 'directory' }
+
+    if has('persistent_undo')
+        let dir_list['undo'] = 'undodir'
+    endif
+
+    let common_dir = parent . '/.' . prefix
+
+    for [dirname, settingname] in items(dir_list)
+        let directory = common_dir . dirname . '/'
+        if exists("*mkdir")
+            if !isdirectory(directory)
+                call mkdir(directory)
+            endif
+        endif
+        if !isdirectory(directory)
+            echo "Warning: Unable to create backup directory: " . directory
+            echo "Try: mkdir -p " . directory
+        else
+            let directory = substitute(directory, " ", "\\\\ ", "g")
+            exec "set " . settingname . "=" . directory
+        endif
+    endfor
+endfunction
+" }
+
 function! s:align()
     let p = '^\s*|\s.*\s|\s*$'
     if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -463,6 +496,9 @@ function! SummarizeTabs()
     echohl None
   endtry
 endfunction
+
+"create initialize directories
+call InitializeDirectories()
 
 "-------------------------------------------------------------------------------
 " Maybe need these someday...

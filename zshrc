@@ -147,3 +147,9 @@ ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+### serve the current directory
+function serve {
+  port="${1:-3000}"
+  ruby -r webrick -e "s = WEBrick::HTTPServer.new(:Port => $port, :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start"
+}
