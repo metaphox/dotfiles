@@ -129,6 +129,9 @@ set scrolloff=3                 " Minimum lines to keep above and below cursor
 set foldenable                  " Auto fold code
 set list
 
+set splitbelow
+set splitright
+
 " long line could be slow sometimes
 set synmaxcol=1024
 
@@ -195,6 +198,9 @@ set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 nnoremap j gj
 nnoremap k gk
 
+" remap leader key to comma which is easier to reach and have a fixed position
+let mapleader = ","
+
 " Easier moving in tabs and windows
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
@@ -226,6 +232,7 @@ nmap <leader>l :set list!<CR>
 " fast toggle linewrapping
 nmap <leader>w :set wrap!<CR>
 
+
 " Stupid shift key fixes
 if has("user_commands")
     command! -bang -nargs=* -complete=file E e<bang> <args>
@@ -256,7 +263,12 @@ nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
 
 " Toggle search highlighting
-nmap <silent> <leader>/ :set invhlsearch<CR>
+" nmap <silent> <leader>/ :set invhlsearch<CR>
+noremap <leader>/ :nohls<cr><c-l>
+
+"fast new tap
+nmap <leader>t :tabnew<CR>
+
 
 " Shortcuts
 " Change Working Directory to that of the current file
@@ -286,11 +298,11 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
 " Adjust viewports to the same size
-map <Leader>= <C-w>=
+map <leader>= <C-w>=
 
 " Map <Leader>ff to display all lines with keyword under cursor
 " and ask which one to jump to
-nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+nmap <leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
 " Easier horizontal scrolling
 map zl zL
@@ -398,18 +410,18 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 
 " Tabularize {
-    nmap <Leader>a& :Tabularize /&<CR>
-    vmap <Leader>a& :Tabularize /&<CR>
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:<CR>
-    vmap <Leader>a: :Tabularize /:<CR>
-    nmap <Leader>a:: :Tabularize /:\zs<CR>
-    vmap <Leader>a:: :Tabularize /:\zs<CR>
-    nmap <Leader>a, :Tabularize /,<CR>
-    vmap <Leader>a, :Tabularize /,<CR>
-    nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-    vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+    nmap <leader>a& :Tabularize /&<CR>
+    vmap <leader>a& :Tabularize /&<CR>
+    nmap <leader>a= :Tabularize /=<CR>
+    vmap <leader>a= :Tabularize /=<CR>
+    nmap <leader>a: :Tabularize /:<CR>
+    vmap <leader>a: :Tabularize /:<CR>
+    nmap <leader>a:: :Tabularize /:\zs<CR>
+    vmap <leader>a:: :Tabularize /:\zs<CR>
+    nmap <leader>a, :Tabularize /,<CR>
+    vmap <leader>a, :Tabularize /,<CR>
+    nmap <leader>a<Bar> :Tabularize /<Bar><CR>
+    vmap <leader>a<Bar> :Tabularize /<Bar><CR>
 " }
 
 " Fugitive {
