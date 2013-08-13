@@ -90,6 +90,8 @@ else
 fi
 
 # Add RVM to PATH for scripting
+### Added by the Heroku Toolbelt
+PATH="/usr/local/heroku/bin:$PATH"
 PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/.rvm/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
 #-------------------
@@ -145,8 +147,6 @@ ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 
 
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 ### serve the current directory
 function serve {

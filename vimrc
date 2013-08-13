@@ -39,6 +39,8 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-markdown'
+Bundle 'scrooloose/syntastic'
+Bundle 'mattn/zencoding-vim'
 
 " required!
 filetype plugin indent on
@@ -58,6 +60,19 @@ syntax on
 
 "no mouse
 set mouse-=a
+
+"set insert cursor to vertical bar
+if &term =~ '^xterm'
+  " solid underscore
+  let &t_SI .= "\<Esc>[6 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
 
 "no clipboard mess
 set clipboard=
