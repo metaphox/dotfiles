@@ -36,6 +36,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
 Bundle 'amirh/HTML-AutoCloseTag'
 Bundle 'hail2u/vim-css3-syntax'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-markdown'
@@ -392,7 +393,7 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     " Enable heavy omni completion, which require computational power and may stall the vim. 
@@ -534,7 +535,3 @@ call InitializeDirectories()
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=black
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=black
-
-
-"enabling powerline by hand, to be removed once it is done
-"set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim

@@ -156,5 +156,4 @@ PS2=":> "
 
 
 export LANG=en_US.UTF-8
-
-
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib
