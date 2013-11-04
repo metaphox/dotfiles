@@ -1,0 +1,16 @@
+# Common functions & Tools for zsh and bash
+
+platform='linux'
+case $OSTYPE in darwin*) platform='osx' ;; esac
+
+# pythonz
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+source /usr/local/bin/virtualenvwrapper.sh
+workon 275
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+rvm use 2.0.0
+
+# z jump
+source ~/dotfiles/z/z.sh

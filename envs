@@ -1,0 +1,16 @@
+# Environment variables common to zsh and bash
+
+PATH="/usr/local/heroku/bin:$PATH"
+export PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/.rvm/bin:/usr/local/sbin:/usr/local/bin:$PATH
+
+export LANG=en_US.UTF-8
+
+#pkg_config
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib
+
+#less
+export LESSOPEN="| $(brew --prefix)/bin/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
+#Java stuff
+export ANT_OPTS=-Xmx2g

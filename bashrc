@@ -5,42 +5,6 @@ if [[ "$unamestr" == 'Linux' ]]; then
 fi
 
 #-------------------
-# Personnal Aliases
-#-------------------
-
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-alias mkdir='mkdir -p'
-
-alias h='history'
-alias ..='cd ..'
-alias path='echo -e ${PATH//:/\\n}'
-
-alias du='du -kh'       # Makes a more readable output.
-
-alias l="ls -l"
-
-# add colors for filetype recognition
-if [[ $platform == 'linux' ]]; then
-	alias ls='ls -h --color=auto'
-else
-	alias ls='ls -hG'
-fi
-
-alias ll='ls -Al'          # show hidden files
-alias lk='ls -lSr'         # sort by size, biggest last
-alias lc='ls -ltcr'        # sort by and show change time, most recent last
-alias lu='ls -ltur'        # sort by and show access time, most recent last
-alias lt='ls -ltr'         # sort by date, most recent last
-alias lm='ls -alG | more'    # pipe through 'more'
-alias lr='ls -lR'          # recursive ls
-alias lh='ls -a | egrep "^\."'
-
-alias ldir="ls -lad */"
-
-#-------------------
 # Prompt
 #-------------------
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
@@ -154,6 +118,8 @@ fi)'
 #export PROMPT_COMMAND="_update_ps1"
 PS2=":> "
 
+source dotfiles/common
+source dotfiles/alias
+source dotfiles/envs
+source dotfiles/functions
 
-export LANG=en_US.UTF-8
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib
