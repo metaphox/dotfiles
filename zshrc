@@ -56,3 +56,5 @@ source dotfiles/common
 source dotfiles/alias
 source dotfiles/functions
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

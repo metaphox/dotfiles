@@ -120,3 +120,5 @@ fi)'
 
 #export PROMPT_COMMAND="_update_ps1"
 PS2=":> "
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
