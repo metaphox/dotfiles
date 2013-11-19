@@ -535,3 +535,11 @@ call InitializeDirectories()
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=black
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=black
+
+
+"golang
+
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
