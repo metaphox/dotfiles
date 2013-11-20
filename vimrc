@@ -81,8 +81,6 @@ set clipboard=
 " abbrev. of messages (avoids 'hit enter')
 set shortmess+=filmnrxoOtT
 
-let g:solarized_termcolors=0
-set background=dark
 
 " Better Unix / Windows compatibility
 set viewoptions=folds,options,cursor,unix,slash
@@ -107,6 +105,8 @@ highlight clear SignColumn      " SignColumn should match background for
 
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
     color solarized                 " Load a colorscheme
+    let g:solarized_termcolors=0
+    set background=light
 endif
 
 if has('cmdline_info')

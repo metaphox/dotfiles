@@ -5,8 +5,8 @@ case $OSTYPE in darwin*) platform='osx' ;; esac
 
 # pythonz
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
-source /usr/local/bin/virtualenvwrapper.sh
-workon 275
+[[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
+workon 276
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
