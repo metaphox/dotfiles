@@ -16,4 +16,4 @@ export GOPATH=$HOME/code/golang/go
 
 #Java stuff
 export ANT_OPTS=-Xmx2g
-export MAVEN_OPTS=-Xmx2g
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"

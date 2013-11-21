@@ -24,13 +24,12 @@ bindkey -v
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.
 unsetopt correct_all
 
-PROMPT='%{$fg[grey]%}%D{%H:%M:%S} %{$fg[yellow]%}%~ \
-$fg[$NCOLOR]%(!.#.>)%{$reset_color%}'
+PROMPT='%{$fg[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}%(!.#.>)%{$reset_color%}'
 
-local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
-RPROMPT='%{$fg[red]%}${${KEYMAP/vicmd/[N]}/(main|viins)/ }%{$reset_color%} \
-${return_code} $(git_super_status) \
-%{$fg[green]%}%n%{$reset_color%}@$my_orange%m%{$reset_color%}%'
+local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
+RPROMPT='%{$fg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
+${return_code} $(git_super_status) %{$fg[grey]%}%D{%H:%M:%S} \
+%{$reset_color%}%n%{$fg[grey]%}@%{$reset_color%}%m'
 
 function zle-line-init zle-keymap-select {
     zle reset-prompt

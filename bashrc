@@ -91,10 +91,10 @@ NewLine="\n"
 Jobs="\j"
 
 
-source dotfiles/common
-source dotfiles/alias
-source dotfiles/envs
-source dotfiles/functions
+source $HOME/dotfiles/common
+source $HOME/dotfiles/alias
+source $HOME/dotfiles/envs
+source $HOME/dotfiles/functions
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion

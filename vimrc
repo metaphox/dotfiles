@@ -19,7 +19,7 @@ Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
-" Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 if has("python") || has("python3")
     Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
@@ -194,8 +194,10 @@ if &term =~ "xterm.*"
 endif
 
 " Invisible char colours
-highlight NonText ctermfg=0 guifg=#4a4a59
-highlight SpecialKey ctermfg=0 guifg=#4a4a59
+" for dark background: highlight NonText ctermfg=0 guifg=#4a4a59
+highlight NonText ctermfg=253 guifg=#dadada
+" for dark background: highlight SpecialKey ctermfg=0 guifg=#4a4a59
+highlight SpecialKey ctermfg=253 guifg=#dadada
 
 set listchars=tab:⇥\ ,trail:␣,eol:¬,nbsp:␣,extends:…,precedes:…
 
