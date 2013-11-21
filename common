@@ -6,11 +6,20 @@ case $OSTYPE in darwin*) platform='osx' ;; esac
 # pythonz
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 [[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
-workon 276
+type workon 2>&1 > /dev/null
+if [[ $? -eq 0 ]]; then
+    # _I_ always install the newest 2.X CPython with pythonz and create a virtualenv
+    # with name like "276", while other virtualenvs do not start with a number.
+    workon `workon | grep '^2[0-9]*$' | tail -n 1`
+fi
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-rvm use 2.0.0
+type rvm 2>&1 > /dev/null
+if [[ $? -eq 0 ]]; then
+    # use the latest MRI
+    rvm use `rvm list strings | grep "^ruby-.*" | tail -n 1` 2&>1 > /dev/null
+fi
 
 # z jump
 source ~/dotfiles/z/z.sh

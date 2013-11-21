@@ -14,7 +14,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in
 # ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(ruby git rvm jira brew osx gem mosh vagrant)
+plugins=(ruby git rvm brew osx gem mosh vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,10 +39,10 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 # git settings
-ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075]±["
+ZSH_THEME_GIT_PROMPT_PREFIX="{"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
-ZSH_THEME_GIT_PROMPT_DIRTY="$my_orange*%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075]]%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="*"
+ZSH_THEME_GIT_PROMPT_SUFFIX="}±"
 ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 
 
