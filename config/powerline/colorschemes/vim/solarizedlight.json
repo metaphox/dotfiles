@@ -1,8 +1,8 @@
 {
 	"name": "Solarized Dark",
 	"groups": {
-		"background":               { "fg": "gray13", "bg": "darkgreencopper" },
-		"background:divider":       { "fg": "azure4", "bg": "darkgreencopper" },
+		"background":               { "fg": "gray13", "bg": "oldlace" },
+		"background:divider":       { "fg": "azure4", "bg": "oldlace" },
 		"mode":                     { "fg": "oldlace", "bg": "green", "attr": ["bold"] },
 		"modified_indicator":       { "fg": "yellow", "bg": "lightyellow", "attr": ["bold"] },
 		"paste_indicator":          { "fg": "red", "bg": "lightyellow", "attr": ["bold"] },
@@ -16,9 +16,9 @@
 		"file_size":                { "fg": "gray13", "bg": "lightyellow" },
 		"file_name_no_file":        { "fg": "gray13", "bg": "lightyellow", "attr": ["bold"] },
 		"file_name_empty":          { "fg": "gray13", "bg": "lightyellow" },
-		"file_format":              { "fg": "gray61", "bg": "darkgreencopper" },
-		"file_encoding":            { "fg": "gray61", "bg": "darkgreencopper" },
-		"file_type":                { "fg": "gray61", "bg": "darkgreencopper" },
+		"file_format":              { "fg": "azure4", "bg": "oldlace" },
+		"file_encoding":            { "fg": "royalblue5", "bg": "oldlace" },
+		"file_type":                { "fg": "darkgreencopper", "bg": "oldlace" },
 		"file_vcs_status":          { "fg": "red", "bg": "lightyellow" },
 		"file_vcs_status_M":        { "fg": "yellow", "bg": "lightyellow" },
 		"file_vcs_status_A":        { "fg": "green", "bg": "lightyellow" },
