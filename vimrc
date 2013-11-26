@@ -21,16 +21,17 @@ Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
-if has("python") || has("python3")
-    Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-else
-    Bundle 'Lokaltog/vim-powerline'
-endif
+Bundle 'bling/vim-airline'
 Bundle 'mbbill/undotree'
-Bundle "myusuf3/numbers.vim"
 Bundle 'airblade/vim-gitgutter'
+Bundle 'mkitt/tabline.vim'
+Bundle 'scrooloose/syntastic'
+
+" Switch line number automatically between modes
+Bundle "myusuf3/numbers.vim"
 Bundle 'godlygeek/tabular'
 " Bundle 'Shougo/neocomplcache'
+
 Bundle 'leshill/vim-json'
 Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
@@ -40,8 +41,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-markdown'
-Bundle 'scrooloose/syntastic'
-Bundle 'mattn/zencoding-vim'
 
 " required!
 filetype plugin indent on
@@ -347,7 +346,7 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 "    let g:neocomplcache_enable_underbar_completion = 1
 "    " Sets minimum char length of syntax keyword.
 "    let g:neocomplcache_min_syntax_length = 3
-"    " buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder 
+"    " buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder
 "    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 "
 "    " Define file-type dependent dictionaries.
@@ -398,7 +397,7 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 "    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 "    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "
-"    " Enable heavy omni completion, which require computational power and may stall the vim. 
+"    " Enable heavy omni completion, which require computational power and may stall the vim.
 "    if !exists('g:neocomplcache_omni_patterns')
 "      let g:neocomplcache_omni_patterns = {}
 "    endif
@@ -546,3 +545,11 @@ filetype plugin indent off
 set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
+"airline
+let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+
+highlight NonText ctermfg=253 guifg=#dadada
+hi TabLine      ctermfg=white ctermbg=blue  cterm=NONE
+hi TabLineFill  ctermfg=black ctermbg=blue  cterm=NONE
+hi TabLineSel   ctermfg=red   ctermbg=white cterm=NONE

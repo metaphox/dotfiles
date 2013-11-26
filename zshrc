@@ -14,7 +14,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in
 # ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(ruby git pip rvm brew osx gem mosh vagrant)
+plugins=(ruby git pip rvm django brew osx gem mosh vagrant)
 
 source $ZSH/oh-my-zsh.sh
 

@@ -8,7 +8,7 @@ PATH=/usr/local/go/bin:$PATH
 export PATH
 
 #pkg_config
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib
+export PKG_CONFIG_PATH=/usr/local/Library/ENV/pkgconfig/10.9:/usr/local/lib/pkgconfig:/usr/local/lib:$PKG_CONFIG_PATH
 
 #Golang
 export GOROOT=/usr/local/go
