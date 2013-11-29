@@ -27,10 +27,20 @@ unsetopt correct_all
 VIRTUAL_ENV_DISABLE_PROMPT=1 #will show it myself
 
 function running_jobs {
-    c=$(jobs | wc -l | tr -d "[:space:]")
+    local c=$(jobs | wc -l | tr -d "[:space:]")
     if [[ $c -ne "0" ]]; then
         echo "[%{$fg[cyan]%}$c%{$reset_color%}] "
     fi
+}
+
+function current_virtual_env {
+    local cur=$(basename $VIRTUAL_ENV 2> /dev/null)
+    if [[ -n $cur ]]; then
+        cur=$(basename $cur)
+    else
+        cur='sys'
+    fi
+    echo $cur
 }
 
 PROMPT='$(running_jobs)%{$fg[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}%(!.#.>)%{$reset_color%} '
@@ -38,8 +48,8 @@ PROMPT='$(running_jobs)%{$fg[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}%(!.
 local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
 
 RPROMPT='%{$fg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
-${return_code} $(git_super_status) %{$fg[grey]%}%D{%H:%M:%S} \
-%{$reset_color%}%n%{$fg[grey]%}@%{$reset_color%}%m'
+${return_code} $(git_super_status) %{$reset_color%}%{$fg[blue]%}%D{%H:%M:%S}%{$reset_color%} \
+%n@%{$fg[grey]%}%m%{$reset_color%} (%{$fg[green]%}$(current_virtual_env)%{$reset_color%})'
 
 function zle-line-init zle-keymap-select {
     zle reset-prompt
