@@ -24,9 +24,19 @@ bindkey -v
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.
 unsetopt correct_all
 
-PROMPT='%{$fg[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}%(!.#.>)%{$reset_color%}'
+VIRTUAL_ENV_DISABLE_PROMPT=1 #will show it myself
+
+function running_jobs {
+    c=$(jobs | wc -l | tr -d "[:space:]")
+    if [[ $c -ne "0" ]]; then
+        echo "[%{$fg[cyan]%}$c%{$reset_color%}] "
+    fi
+}
+
+PROMPT='$(running_jobs)%{$fg[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}%(!.#.>)%{$reset_color%} '
 
 local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
+
 RPROMPT='%{$fg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
 ${return_code} $(git_super_status) %{$fg[grey]%}%D{%H:%M:%S} \
 %{$reset_color%}%n%{$fg[grey]%}@%{$reset_color%}%m'

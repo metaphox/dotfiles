@@ -26,6 +26,8 @@ Bundle 'mbbill/undotree'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mkitt/tabline.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'bling/vim-bufferline'
+Bundle 'metaphox/MatchTagAlways'
 
 " Switch line number automatically between modes
 Bundle "myusuf3/numbers.vim"
@@ -194,9 +196,9 @@ endif
 
 " Invisible char colours
 " for dark background: highlight NonText ctermfg=0 guifg=#4a4a59
-highlight NonText ctermfg=253 guifg=#dadada
+highlight NonText ctermfg=7      ctermbg=white guifg=#dadada
 " for dark background: highlight SpecialKey ctermfg=0 guifg=#4a4a59
-highlight SpecialKey ctermfg=253 guifg=#dadada
+highlight SpecialKey ctermfg=7   ctermbg=7     guifg=#dadada
 
 set listchars=tab:⇥\ ,trail:␣,eol:¬,nbsp:␣,extends:…,precedes:…
 
