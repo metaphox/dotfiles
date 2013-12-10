@@ -100,10 +100,17 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
-# This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
-# I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
+function current_virtual_env {
+    local cur=$(basename $VIRTUAL_ENV 2> /dev/null)
+    if [[ -n $cur ]]; then
+        cur=$(basename $cur)
+    else
+        cur='sys'
+    fi
+    echo $cur
+}
 
-export PS1=$IBlack$Time24h$Blue' \u'$BCyan'[\h]'$Color_Off'$(git branch &>/dev/null;\
+export PS1=$IBlack$Time24h' ('$Green$(current_virtual_env)$Color_Off') '$Blue'\u'$BCyan'[\h]'$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
@@ -112,11 +119,12 @@ if [ $? -eq 0 ]; then \
   else \
     # @5 - Changes to working tree
     echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BYellow$PathShort$Color_Off'\n >"; \
+  fi) '$BYellow$PathShort$Color_Off'\n> "; \
 else \
   # @2 - Prompt when not in GIT repo
-  echo " '$Yellow$PathShort$Color_Off'\n >"; \
+  echo " '$Yellow$PathShort$Color_Off'\n> "; \
 fi)'
 
 PS2=":> "
 
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
