@@ -70,10 +70,8 @@ ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 #----- end of zsh specific part
 #------------------------------
 
-source dotfiles/envs
-source dotfiles/common
-source dotfiles/alias
-source dotfiles/functions
+source ~/dotfiles/inc/envs
+source ~/dotfiles/inc/common
+source ~/dotfiles/inc/functions
+source ~/dotfiles/inc/alias
 
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

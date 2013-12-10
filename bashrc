@@ -91,10 +91,10 @@ NewLine="\n"
 Jobs="\j"
 
 
-source $HOME/dotfiles/common
-source $HOME/dotfiles/alias
-source $HOME/dotfiles/envs
-source $HOME/dotfiles/functions
+source $HOME/dotfiles/inc/envs
+source $HOME/dotfiles/inc/common
+source $HOME/dotfiles/inc/functions
+source $HOME/dotfiles/inc/alias
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
@@ -118,7 +118,5 @@ else \
   echo " '$Yellow$PathShort$Color_Off'\n >"; \
 fi)'
 
-#export PROMPT_COMMAND="_update_ps1"
 PS2=":> "
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

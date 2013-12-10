@@ -2,7 +2,7 @@
 
 export LANG=en_US.UTF-8
 
-PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/.rvm/bin:/usr/local/sbin:/usr/local/bin:$PATH
+PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/sbin:/usr/local/bin:$PATH
 PATH=/usr/local/heroku/bin:$PATH
 PATH=/usr/local/go/bin:$PATH
 export PATH
