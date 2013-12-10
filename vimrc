@@ -196,9 +196,9 @@ endif
 
 " Invisible char colours
 " for dark background: highlight NonText ctermfg=0 guifg=#4a4a59
-highlight NonText ctermfg=7      ctermbg=white guifg=#dadada
+hi NonText ctermfg=7 ctermbg=white guifg=#dadada
 " for dark background: highlight SpecialKey ctermfg=0 guifg=#4a4a59
-highlight SpecialKey ctermfg=7   ctermbg=7     guifg=#dadada
+hi SpecialKey ctermfg=7 ctermbg=7 guifg=#dadada
 
 set listchars=tab:⇥\ ,trail:␣,eol:¬,nbsp:␣,extends:…,precedes:…
 
@@ -250,6 +250,10 @@ nmap <leader>l :set list!<CR>
 
 " fast toggle linewrapping
 nmap <leader>w :set wrap!<CR>
+
+let g:gitgutter_enabled = 0
+" fast toggle git gutter
+nmap <leader>g :GitGutterToggle<CR>
 
 
 " Stupid shift key fixes
@@ -551,7 +555,9 @@ filetype plugin indent on
 let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#enabled = 1
 
-highlight NonText ctermfg=253 guifg=#dadada
+hi NonText ctermfg=253 guifg=#dadada
 hi TabLine      ctermfg=white ctermbg=blue  cterm=NONE
 hi TabLineFill  ctermfg=black ctermbg=blue  cterm=NONE
 hi TabLineSel   ctermfg=red   ctermbg=white cterm=NONE
+hi OverLength   ctermbg=7 guibg=#eee8d5
+match OverLength /\%81v.\+/

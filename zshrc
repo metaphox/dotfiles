@@ -29,7 +29,7 @@ VIRTUAL_ENV_DISABLE_PROMPT=1 #will show it myself
 function running_jobs {
     local c=$(jobs | wc -l | tr -d "[:space:]")
     if [[ $c -ne "0" ]]; then
-        echo "[%{$fg[cyan]%}$c%{$reset_color%}] "
+        echo "[%{$fg[red]%}$c%{$reset_color%}] "
     fi
 }
 
