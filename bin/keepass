@@ -1,0 +1,7 @@
+#!/bin/bash
+COMMAND=`echo $* | sed -e s#\/#\\\\\\\#g`
+if [ ${COMMAND} ]; then
+COMMAND='Z:'$COMMAND
+fi
+wine "$HOME/.wine/drive_c/Program Files/KeePass-2.24/KeePass.exe" "${COMMAND}" &> /dev/null &
+

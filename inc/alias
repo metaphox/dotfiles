@@ -36,4 +36,3 @@ alias lh='ls -a | egrep "^\."'
 
 alias ldir="ls -lad */"
 
-alias ipythonqtconsole="PYTHONPATH=/usr/local/lib/python2.7/site-packages ipython qtconsole --matplotlib=inline --ConsoleWidget.font_family=\"PragmataPro\" --ConsoleWidget.font_size=14 --style=solarizedlight &"
