@@ -96,8 +96,9 @@ source $HOME/dotfiles/inc/common
 source $HOME/dotfiles/inc/functions
 source $HOME/dotfiles/inc/alias
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+type brew > /dev/null 2>&1
+if [[ $? -eq 0 ]] && [[ -f $(brew --prefix)/etc/bash_completion ]]; then
+        . $(brew --prefix)/etc/bash_completion
 fi
 
 function current_virtual_env {
