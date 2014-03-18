@@ -25,7 +25,7 @@ else
 fi
 
 alias l="ls -l"
-alias ll='ls -Al'          # show hidden files
+alias ll='ls -al'          # show hidden files
 alias lk='ls -lSr'         # sort by size, biggest last
 alias lc='ls -ltcr'        # sort by and show change time, most recent last
 alias lu='ls -ltur'        # sort by and show access time, most recent last
