@@ -27,7 +27,10 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'mkitt/tabline.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-bufferline'
+Bundle 'mattn/emmet-vim'
 Bundle 'metaphox/MatchTagAlways'
+Bundle 'majutsushi/tagbar'
+
 
 " Switch line number automatically between modes
 Bundle "myusuf3/numbers.vim"
@@ -107,7 +110,7 @@ highlight clear SignColumn      " SignColumn should match background for
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
     color solarized                 " Load a colorscheme
     let g:solarized_termcolors=0
-    set background=light
+    set background=dark
 endif
 
 if has('cmdline_info')
@@ -195,10 +198,12 @@ if &term =~ "xterm.*"
 endif
 
 " Invisible char colours
-" for dark background: highlight NonText ctermfg=0 guifg=#4a4a59
-hi NonText ctermfg=7 ctermbg=white guifg=#dadada
-" for dark background: highlight SpecialKey ctermfg=0 guifg=#4a4a59
-hi SpecialKey ctermfg=7 ctermbg=7 guifg=#dadada
+" for dark background:
+highlight NonText ctermfg=0 guifg=#4a4a59
+" hi NonText ctermfg=7 ctermbg=white guifg=#dadada
+" for dark background:
+highlight SpecialKey ctermfg=0 guifg=#4a4a59
+"hi SpecialKey ctermfg=7 ctermbg=7 guifg=#dadada
 
 set listchars=tab:⇥\ ,trail:␣,eol:¬,nbsp:␣,extends:…,precedes:…
 
@@ -248,8 +253,16 @@ nnoremap ; :
 " fast toggle listchars
 nmap <leader>l :set list!<CR>
 
+" fast toggle spell checking
+nmap <leader>s :set spell!<CR>
+
 " fast toggle linewrapping
 nmap <leader>w :set wrap!<CR>
+
+" Tags
+nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
 
 let g:gitgutter_enabled = 0
 " fast toggle git gutter
@@ -553,11 +566,10 @@ filetype plugin indent on
 
 "airline
 let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#enabled = 1
+		" let g:airline#extensions#tabline#enabled = 1
 
-hi NonText ctermfg=253 guifg=#dadada
 hi TabLine      ctermfg=white ctermbg=blue  cterm=NONE
 hi TabLineFill  ctermfg=black ctermbg=blue  cterm=NONE
-hi TabLineSel   ctermfg=red   ctermbg=white cterm=NONE
-hi OverLength   ctermbg=7 guibg=#eee8d5
+hi TabLineSel   ctermfg=red   ctermbg=blue cterm=NONE
+hi OverLength   ctermbg=black guibg=#181818
 match OverLength /\%81v.\+/
