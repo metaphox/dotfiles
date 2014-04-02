@@ -16,7 +16,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundles that I _really_ need
+" color theme
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/base16-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
@@ -25,17 +27,21 @@ Bundle 'bling/vim-airline'
 Bundle 'mbbill/undotree'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mkitt/tabline.vim'
-Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-bufferline'
+Bundle 'majutsushi/tagbar'
+
+Bundle 'scrooloose/syntastic'
 Bundle 'mattn/emmet-vim'
 Bundle 'metaphox/MatchTagAlways'
-Bundle 'majutsushi/tagbar'
 
 
 " Switch line number automatically between modes
 Bundle "myusuf3/numbers.vim"
 Bundle 'godlygeek/tabular'
 " Bundle 'Shougo/neocomplcache'
+
+" Autocompletion
+Bundle 'Valloric/YouCompleteMe'
 
 Bundle 'leshill/vim-json'
 Bundle 'groenewege/vim-less'
@@ -107,11 +113,14 @@ set cursorline                  " Highlight current line
 highlight clear SignColumn      " SignColumn should match background for
                                 " things like vim-gitgutter
 
-if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-    color solarized                 " Load a colorscheme
-    let g:solarized_termcolors=0
-    set background=dark
-endif
+"if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+"    color solarized                 " Load a colorscheme
+"    let g:solarized_termcolors=0
+"    set background=dark
+"endif
+
+colorscheme base16-eighties
+set background=dark
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
@@ -173,7 +182,7 @@ if has('gui_running')
         set guifont=PragmataPro\ for\ Powerline:h14,Source\ Code\ Pro\ for\ Powerline:h14,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
     endif
     if has('gui_macvim')
-        set transparency=1          " Make the window slightly transparent
+        set transparency=0           " Make the window slightly transparent
     endif
 endif
 
@@ -573,3 +582,12 @@ hi TabLineFill  ctermfg=black ctermbg=blue  cterm=NONE
 hi TabLineSel   ctermfg=red   ctermbg=blue cterm=NONE
 hi OverLength   ctermbg=black guibg=#181818
 match OverLength /\%81v.\+/
+
+"Syntastic
+
+let g:syntastic_mode_map = { 'mode': 'active',
+    \ 'active_filetypes': ['python', 'ruby', 'javascript'],
+    \ 'passive_filetypes': ['html'] }
+
+" You complete me
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'

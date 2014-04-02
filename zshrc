@@ -49,7 +49,7 @@ local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
 
 RPROMPT='%{$fg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
 ${return_code} $(git_super_status) %{$reset_color%}%{$fg[blue]%}%D{%H:%M:%S}%{$reset_color%} \
-%n@%{$fg[grey]%}%m%{$reset_color%} (%{$fg[green]%}$(current_virtual_env)%{$reset_color%})'
+%n@%{$fg[yellow]%}%m%{$reset_color%} (%{$fg[green]%}$(current_virtual_env)%{$reset_color%})'
 
 function zle-line-init zle-keymap-select {
     zle reset-prompt
