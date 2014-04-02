@@ -4,6 +4,7 @@ platform='linux'
 case $OSTYPE in darwin*) platform='osx' ;; esac
 
 # pythonz
+VIRTUAL_ENV_DISABLE_PROMPT=1
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 [[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
 type workon > /dev/null 2>&1
