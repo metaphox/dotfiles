@@ -14,7 +14,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in
 # ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(go ruby git pip rvm django brew osx gem mosh vagrant)
+plugins=(git pip rvm django brew osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -24,7 +24,6 @@ bindkey -v
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.
 unsetopt correct_all
 
-VIRTUAL_ENV_DISABLE_PROMPT=1 #will show it myself
 
 function running_jobs {
     local c=$(jobs | wc -l | tr -d "[:space:]")

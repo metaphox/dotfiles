@@ -1,5 +1,7 @@
 # Common functions & Tools for zsh and bash
 
+VIRTUAL_ENV_DISABLE_PROMPT=1 #will show it myself
+
 platform='linux'
 case $OSTYPE in darwin*) platform='osx' ;; esac
 
