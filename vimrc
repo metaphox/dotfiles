@@ -40,9 +40,6 @@ Bundle "myusuf3/numbers.vim"
 Bundle 'godlygeek/tabular'
 " Bundle 'Shougo/neocomplcache'
 
-" Autocompletion
-Bundle 'Valloric/YouCompleteMe'
-
 Bundle 'leshill/vim-json'
 Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
