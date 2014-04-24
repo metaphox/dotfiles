@@ -17,7 +17,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Bundles that I _really_ need
 " color theme
-"Bundle 'altercation/vim-colors-solarized'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
@@ -112,14 +112,13 @@ highlight clear SignColumn      " SignColumn should match background for
                                 " things like vim-gitgutter
 
 set background=dark
-if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-    color solarized                 " Load a colorscheme
-    let g:solarized_termcolors=0
-else
-    colorscheme base16-eighties
-endif
+"if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+"    color solarized                 " Load a colorscheme
+"    let g:solarized_termcolors=0
+"endif
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-solarized
 set background=dark
-
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
