@@ -8,16 +8,16 @@ scriptencoding utf-8
 " The next three lines ensure that the ~/.vim/bundle/ system works
 filetype on
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Bundles that I _really_ need
 " color theme
-Bundle 'altercation/vim-colors-solarized'
+"Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
@@ -50,8 +50,9 @@ Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-markdown'
 
-" required!
-filetype plugin indent on
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 "-------------------------------------------------------------------------------
 " Bundle Settings
@@ -110,14 +111,15 @@ set cursorline                  " Highlight current line
 highlight clear SignColumn      " SignColumn should match background for
                                 " things like vim-gitgutter
 
-"if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-"    color solarized                 " Load a colorscheme
-"    let g:solarized_termcolors=0
-"    set background=dark
-"endif
-
-colorscheme base16-eighties
 set background=dark
+if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    color solarized                 " Load a colorscheme
+    let g:solarized_termcolors=0
+else
+    colorscheme base16-eighties
+endif
+set background=dark
+
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
