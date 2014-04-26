@@ -110,15 +110,8 @@ set cursorline                  " Highlight current line
 
 highlight clear SignColumn      " SignColumn should match background for
                                 " things like vim-gitgutter
-
 set background=dark
-"if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-"    color solarized                 " Load a colorscheme
-"    let g:solarized_termcolors=0
-"endif
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-solarized
-set background=dark
+colorscheme solarized
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
@@ -573,7 +566,7 @@ filetype plugin indent on
 
 "airline
 let g:airline_powerline_fonts = 1
-		" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 hi TabLine      ctermfg=white ctermbg=blue  cterm=NONE
 hi TabLineFill  ctermfg=black ctermbg=blue  cterm=NONE

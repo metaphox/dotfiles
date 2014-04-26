@@ -111,7 +111,7 @@ function current_virtual_env {
     echo $cur
 }
 
-export PS1=$IBlack$Time24h$Color_Off' ('$Green'$(current_virtual_env)'$Color_Off') '$Blue'\u'$Color_Off'[\h]''$(git branch &>/dev/null;\
+export PS1=$IGreen$Time24h$Color_Off' ['$Green'$(current_virtual_env)'$Color_Off'] '$Blue'\u'$Color_Off'('$Cyan'\h'$Color_Off')$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
