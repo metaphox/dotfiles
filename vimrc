@@ -111,7 +111,15 @@ set cursorline                  " Highlight current line
 highlight clear SignColumn      " SignColumn should match background for
                                 " things like vim-gitgutter
 set background=dark
-colorscheme solarized
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" colorscheme solarized
+
+if has('gui_running')
+else
+    let base16colorspace=256  " Access colors present in 256 colorspace
+endif
+colorscheme base16-monokai
 
 if has('cmdline_info')
     set ruler                   " Show the ruler

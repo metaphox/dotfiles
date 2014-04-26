@@ -1,9 +1,10 @@
 # Common functions & Tools for zsh and bash
 
 # Base16 Shell
-#BASE16_SCHEME="solarized"
-#BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
-#[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+BASE16_SCHEME="eighties"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+echo $BASE16_SHELL
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 VIRTUAL_ENV_DISABLE_PROMPT=1 #will show it myself
 
