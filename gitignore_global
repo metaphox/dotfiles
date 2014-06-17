@@ -25,3 +25,7 @@ Thumbs.db
 ##############
 *.swp
 
+
+# IDE crap #
+############
+.idea

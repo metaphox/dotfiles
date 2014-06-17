@@ -20,6 +20,10 @@ source $ZSH/oh-my-zsh.sh
 
 #use vi key binding
 bindkey -v
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+# Search forward in the history for a line beginning with the current line up to the cursor.
+# This leaves the cursor in its original position.
 
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.
 unsetopt correct_all
@@ -32,23 +36,14 @@ function running_jobs {
     fi
 }
 
-function current_virtual_env {
-    local cur=$(basename $VIRTUAL_ENV 2> /dev/null)
-    if [[ -n $cur ]]; then
-        cur=$(basename $cur)
-    else
-        cur='sys'
-    fi
-    echo $cur
-}
-
 PROMPT='$(running_jobs)%{$fg[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}%(!.#.>)%{$reset_color%} '
 
 local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
 
 RPROMPT='%{$fg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
-${return_code} $(git_super_status) %{$reset_color%}%{$fg[blue]%}%D{%H:%M:%S}%{$reset_color%} \
-%n@%{$fg[yellow]%}%m%{$reset_color%} (%{$fg[green]%}$(current_virtual_env)%{$reset_color%})'
+${return_code} $(git_super_status) %{$reset_color%}%D{%H:%M:%S} \
+%{$fg[green]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} \
+(%{$fg[blue]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%}|%{$fg[red]%}${rvm_ruby_string:-"sys"}%{$reset_color%})'
 
 function zle-line-init zle-keymap-select {
     zle reset-prompt
