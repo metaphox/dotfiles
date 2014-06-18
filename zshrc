@@ -40,10 +40,10 @@ PROMPT='$(running_jobs)%{$fg[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}%(!.
 
 local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
 
-RPROMPT='%{$fg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
+RPROMPT='%{$fg[black]$bg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
 ${return_code} $(git_super_status) %{$reset_color%}%D{%H:%M:%S} \
-%{$fg[green]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} \
-(%{$fg[blue]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%}|%{$fg[red]%}${RUBY_VERSION:-"sys"}%{$reset_color%})'
+%{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow]%}%m%{$reset_color%}] \
+(%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%}|%{$fg[magenta]%}${RUBY_VERSION:-"sys"}%{$reset_color%})'
 
 function zle-line-init zle-keymap-select {
     zle reset-prompt

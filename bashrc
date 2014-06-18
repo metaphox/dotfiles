@@ -101,17 +101,7 @@ if [[ $? -eq 0 ]] && [[ -f $(brew --prefix)/etc/bash_completion ]]; then
         . $(brew --prefix)/etc/bash_completion
 fi
 
-function current_virtual_env {
-    local cur=$(basename $VIRTUAL_ENV 2> /dev/null)
-    if [[ -n $cur ]]; then
-        cur=$(basename $cur)
-    else
-        cur='sys'
-    fi
-    echo $cur
-}
-
-export PS1=$IGreen$Time24h$Color_Off' ['$Green'$(current_virtual_env)'$Color_Off'] '$Blue'\u'$Color_Off'('$Cyan'\h'$Color_Off')$(git branch &>/dev/null;\
+export PS1=$White$Time24h$Color_Off' ('$Cyan$(basename ${VIRTUAL_ENV:-"sys"})$Color_Off'|'$Purple${RUBY_VERSION:-"sys"}$Color_Off') '$IGreen'\u'$Color_Off'['$IYellow'\h'$Color_Off']$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
