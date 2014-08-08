@@ -119,7 +119,7 @@ if has('gui_running')
 else
     let base16colorspace=256  " Access colors present in 256 colorspace
 endif
-colorscheme base16-monokai
+colorscheme base16-eighties
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
