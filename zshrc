@@ -1,14 +1,9 @@
-source ~/dotfiles/inc/envs
-source ~/dotfiles/inc/common
-source ~/dotfiles/inc/functions
-source ~/dotfiles/inc/alias
 
 # Enable colors
 autoload -U colors
 colors
 
-# Enable function substituion in prompt
-setopt PROMPT_SUBST
+ZSH=~/.oh-my-zsh
 
 # Use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -20,9 +15,9 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in
 # ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-#plugins=(git brew osx)
+plugins=(git brew osx)
 
-#source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 #use vi key binding
 bindkey -v
@@ -64,6 +59,11 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 #----- end of zsh specific part
+
+source ~/dotfiles/inc/envs
+source ~/dotfiles/inc/common
+source ~/dotfiles/inc/functions
+source ~/dotfiles/inc/alias
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
