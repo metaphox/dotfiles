@@ -40,7 +40,8 @@ function running_jobs {
     fi
 }
 
-PROMPT='$(running_jobs)%{$fg_bold[yellow]%}%(!.#.>)%{$reset_color%} '
+PROMPT='$(running_jobs)%{$fg_bold[yellow]%}%(!.#.❯)%{$reset_color%} '
+#PROMPT='$(running_jobs)%{$fg_bold[yellow]%}%(!.#.>)%{$reset_color%} '
 
 local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
 
