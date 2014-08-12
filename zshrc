@@ -1,3 +1,8 @@
+source ~/dotfiles/inc/envs
+source ~/dotfiles/inc/common
+source ~/dotfiles/inc/functions
+source ~/dotfiles/inc/alias
+
 # Enable colors
 autoload -U colors
 colors
@@ -41,14 +46,15 @@ function running_jobs {
 }
 
 PROMPT='$(running_jobs)%{$fg_bold[yellow]%}%(!.#.❯)%{$reset_color%} '
-#PROMPT='$(running_jobs)%{$fg_bold[yellow]%}%(!.#.>)%{$reset_color%} '
 
 local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
+
+#local ruby_version="%{$fg[magenta]%}$(rvm current)%{$reset_color%}"
 
 RPROMPT='%{$fg[black]$bg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
 ${return_code} %{$reset_color%}%D{%H:%M:%S} \
 %{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
-(%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%}|%{$fg[magenta]%}${RUBY_VERSION:-"sys"}%{$reset_color%})'
+(%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%})'
 
 function zle-line-init zle-keymap-select {
     zle reset-prompt
@@ -57,17 +63,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-
-
-#------------------------------
 #----- end of zsh specific part
-#------------------------------
-
-source ~/dotfiles/inc/envs
-source ~/dotfiles/inc/common
-source ~/dotfiles/inc/functions
-source ~/dotfiles/inc/alias
-
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
