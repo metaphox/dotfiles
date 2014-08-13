@@ -1,5 +1,8 @@
 # Aliases
 
+alias py='source ~/dotfiles/inc/py'
+alias rb='source ~/dotfiles/inc/rb'
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'

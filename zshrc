@@ -1,10 +1,8 @@
-
 # Enable colors
 autoload -U colors
 colors
 
 ZSH=~/.oh-my-zsh
-
 # Use case-sensitive completion
 CASE_SENSITIVE="true"
 
@@ -64,6 +62,4 @@ source ~/dotfiles/inc/envs
 source ~/dotfiles/inc/common
 source ~/dotfiles/inc/functions
 source ~/dotfiles/inc/alias
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
