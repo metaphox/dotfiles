@@ -1,8 +1,9 @@
 # pythonz
+echo -n "Activating virtual env... "
 VIRTUAL_ENV_DISABLE_PROMPT=1
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 [[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
-echo "Python ok."
+echo "done."
 type workon > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
     # _I_ always install the newest 2.X CPython with pythonz and create a virtualenv

@@ -1,6 +1,7 @@
 # Aliases
 
 alias py='source ~/dotfiles/inc/py'
+alias ipython='source ~/dotfiles/inc/py && unalias ipython && ipython'
 alias rb='source ~/dotfiles/inc/rb'
 
 alias rm='rm -i'
