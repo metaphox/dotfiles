@@ -13,16 +13,21 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in
 # ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git brew osx)
+plugins=(git brew osx vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-#use vi key binding
-bindkey -v
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
 # Search forward in the history for a line beginning with the current line up to the cursor.
 # This leaves the cursor in its original position.
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+
+# edit current command in editor by pressing v in cmd mode
+# the following function are supplied by vi-mode plugin already
+#bindkey -v
+#autoload -U edit-command-line
+#zle -N edit-command-line
+#bindkey -M vicmd v edit-command-line
 
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.
 unsetopt correct_all
@@ -40,12 +45,14 @@ function running_jobs {
 
 PROMPT='$(running_jobs)%{$fg_bold[yellow]%}%(!.#.❯)%{$reset_color%} '
 
-local return_code="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
+local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
 #local ruby_version="%{$fg[magenta]%}$(rvm current)%{$reset_color%}"
 
-RPROMPT='%{$fg[black]$bg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
-${return_code} %{$reset_color%}%D{%H:%M:%S} \
+#RPROMPT='%{$fg[black]$bg[yellow]%}${${KEYMAP/vicmd/[N]}/(main|viins)/}%{$reset_color%} \
+
+# $(vi_mode_prompt_info) requires vi-mode plugin
+RPROMPT='$(vi_mode_prompt_info) ${return_code} %{$reset_color%}%D{%H:%M:%S} \
 %{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
 (%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%})'
 
