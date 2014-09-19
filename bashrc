@@ -101,7 +101,12 @@ if [[ $? -eq 0 ]] && [[ -f $(brew --prefix)/etc/bash_completion ]]; then
         . $(brew --prefix)/etc/bash_completion
 fi
 
-export PS1=$White$Time24h$Color_Off' ('$Cyan$(basename ${VIRTUAL_ENV:-"sys"})$Color_Off'|'$Purple${RUBY_VERSION:-"sys"}$Color_Off') '$IGreen'\u'$Color_Off'['$IYellow'\h'$Color_Off']$(git branch &>/dev/null;\
+function foo(){
+    echo $(basename ${VIRTUAL_ENV:-"sys"})
+}
+
+export PS1=$White$Time24h$Color_Off' ('$Cyan'$(basename ${VIRTUAL_ENV:-"sys"})'$Color_Off\
+'|'$Purple'${RUBY_VERSION:-"sys"}'$Color_Off') '$IGreen'\u'$Color_Off'['$IYellow'\h'$Color_Off']$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
