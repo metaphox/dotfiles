@@ -19,14 +19,21 @@ Plugin 'gmarik/Vundle.vim'
 " color theme
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
+" surround
 Bundle 'tpope/vim-surround'
+" quick open file
 Bundle 'kien/ctrlp.vim'
+" git wrapper
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
+
+"status line
 Bundle 'bling/vim-airline'
 Bundle 'mbbill/undotree'
+" git integration
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mkitt/tabline.vim'
+" buffer line
 Bundle 'bling/vim-bufferline'
 Bundle 'majutsushi/tagbar'
 
@@ -49,6 +56,9 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-markdown'
+
+" Golang support
+Bundle 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

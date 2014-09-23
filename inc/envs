@@ -3,16 +3,21 @@
 export LANG=en_US.UTF-8
 
 PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/sbin:/usr/local/bin:$PATH
-PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:$HOME/bin/android-sdk/sdk/tools
-PATH=$PATH:$HOME/bin/android-sdk/sdk/platform-tools
+# canonical golang
+#PATH=$PATH:/usr/local/go/bin
+# brew golang
+PATH=$PATH:/usr/local/opt/go/bin:/usr/local/opt/go/libexec/bin
+#PATH=$PATH:$HOME/bin/android-sdk/sdk/tools
+#PATH=$PATH:$HOME/bin/android-sdk/sdk/platform-tools
 export PATH
 
 #pkg_config
 export PKG_CONFIG_PATH=/usr/local/Library/ENV/pkgconfig/10.9:/usr/local/lib/pkgconfig:/usr/local/lib:$PKG_CONFIG_PATH
 
 #Golang
-export GOROOT=/usr/local/go
+# canonical
+export GOPATH=$HOME/code/golang/go
+# brew
 export GOPATH=$HOME/code/golang/go
 
 #Java stuff
