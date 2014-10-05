@@ -39,7 +39,6 @@ Bundle 'majutsushi/tagbar'
 
 Bundle 'scrooloose/syntastic'
 Bundle 'mattn/emmet-vim'
-Bundle 'metaphox/MatchTagAlways'
 
 
 " Switch line number automatically between modes
@@ -103,7 +102,6 @@ set shortmess+=filmnrxoOtT
 " Better Unix / Windows compatibility
 set viewoptions=folds,options,cursor,unix,slash
 set history=1000                    " Store a ton of history (default is 20)
-set spell                           " Spell checking on
 set hidden                          " Allow buffer switching without saving
 
 set backup                  " Backups are nice ...

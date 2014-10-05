@@ -2,7 +2,7 @@
 
 ### serve the current directory
 function serve {
-  port="${1:-3000}"
+  port="${1:-8080}"
   ruby -r webrick -e "s = WEBrick::HTTPServer.new(:BindAddress => '0.0.0.0', :Port => $port, :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start"
 }
 
