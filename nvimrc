@@ -25,24 +25,27 @@ Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
 " git wrapper
 Bundle 'tpope/vim-fugitive'
+" easy moving, <leader><leader>j
 Bundle 'Lokaltog/vim-easymotion'
-
 "status line
 Bundle 'bling/vim-airline'
+" undo tree
 Bundle 'mbbill/undotree'
 " git integration
 Bundle 'airblade/vim-gitgutter'
+" tabline
 Bundle 'mkitt/tabline.vim'
 " buffer line
 Bundle 'bling/vim-bufferline'
 Bundle 'majutsushi/tagbar'
 
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'mattn/emmet-vim'
-
 
 " Switch line number automatically between modes
 Bundle "myusuf3/numbers.vim"
+
+" tabular
 Bundle 'godlygeek/tabular'
 " Bundle 'Shougo/neocomplcache'
 
@@ -331,13 +334,6 @@ cmap cd. lcd %:p:h
 vnoremap < <gv
 vnoremap > >gv
 
-" Fix home and end keybindings for screen, particularly on mac
-" - for some reason this fixes the arrow keys too. huh.
-map [F $
-imap [F $
-map [H g0
-imap [H g0
-
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
 
@@ -594,7 +590,4 @@ match OverLength /\%81v.\+/
 
 let g:syntastic_mode_map = { 'mode': 'active',
     \ 'active_filetypes': ['python', 'ruby', 'javascript'],
-    \ 'passive_filetypes': ['html'] }
-
-" You complete me
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+    \ 'passive_filetypes': ['html', 'java'] }
