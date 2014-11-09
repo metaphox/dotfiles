@@ -369,7 +369,7 @@ inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
     " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
     let g:acp_enableAtStartup = 0
     " Launches neocomplcache automatically on vim startup.
-    let g:neocomplcache_enable_at_startup = 1
+    let g:neocomplcache_enable_at_startup = 0
     " Use smartcase.
     let g:neocomplcache_enable_smart_case = 1
     " Use camel case completion.
