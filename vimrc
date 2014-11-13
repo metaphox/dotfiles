@@ -17,7 +17,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " Bundles that I _really_ need
 " color theme
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
 " surround
 Bundle 'tpope/vim-surround'
@@ -25,18 +24,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
 " git wrapper
 Bundle 'tpope/vim-fugitive'
-" easy moving, <leader><leader>j
-Bundle 'Lokaltog/vim-easymotion'
 "status line
 Bundle 'bling/vim-airline'
 " undo tree
 Bundle 'mbbill/undotree'
-" git integration
-Bundle 'airblade/vim-gitgutter'
 " tabline
 Bundle 'mkitt/tabline.vim'
-" buffer line
-" Bundle 'bling/vim-bufferline'
+" tagbar
 Bundle 'majutsushi/tagbar'
 
 " Bundle 'scrooloose/syntastic'
@@ -57,8 +51,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-markdown'
-
-" Golang support
 Bundle 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
@@ -120,16 +112,17 @@ set cursorline                  " Highlight current line
 
 highlight clear SignColumn      " SignColumn should match background for
                                 " things like vim-gitgutter
+
 set background=dark
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-" colorscheme solarized
 
 if has('gui_running')
 else
     let base16colorspace=256  " Access colors present in 256 colorspace
 endif
 colorscheme base16-eighties
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" colorscheme solarized
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
@@ -164,8 +157,8 @@ set wildmode=list:longest,full  " Command <Tab> completion, list matches, then l
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
-set foldenable                  " Auto fold code
-set list
+set list                        " show white space
+set nofoldenable                " disable folding
 
 set splitbelow
 set splitright
@@ -178,9 +171,6 @@ set ttyfast
 
 " avoid scrolling problems
 set lazyredraw
-
-" disable folding
-set nofoldenable
 
 if has('gui_running')
     set guioptions-=T           " remove the toolbar
@@ -280,13 +270,7 @@ nmap <leader>w :set wrap!<CR>
 " Tags
 nnoremap <leader>. :CtrlPTag<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
-
-
-let g:gitgutter_enabled = 0
-" fast toggle git gutter
-nmap <leader>g :GitGutterToggle<CR>
-
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " Stupid shift key fixes
 if has("user_commands")
@@ -484,17 +468,6 @@ endfunction
 
 "create initialize directories
 call InitializeDirectories()
-
-"-------------------------------------------------------------------------------
-" Maybe need these someday...
-"-------------------------------------------------------------------------------
-
-"let g:indent_guides_auto_colors = 0
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=black
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=black
-
-
-"golang
 
 filetype off
 filetype plugin indent off
