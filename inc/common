@@ -7,6 +7,3 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 
 platform='linux'
 case $OSTYPE in darwin*) platform='osx' ;; esac
-
-# z jump
-[[ -f ~/dotfiles/z/z.sh ]] && source ~/dotfiles/z/z.sh

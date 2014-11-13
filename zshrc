@@ -43,7 +43,11 @@ function running_jobs {
     fi
 }
 
-PROMPT='$(running_jobs)%{$fg_bold[yellow]%}%(!.#.❯)%{$reset_color%} '
+VIMODE_PROMPT_CMD="%{$fg_bold[red]%}%(!.#.❯)%{$reset_color%}"
+
+VIMODE_PROMPT_INS="%{$fg_bold[yellow]%}%(!.#.❯)%{$reset_color%}"
+
+PROMPT='$(running_jobs)$(vi_mode_command_prompt) '
 
 local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
