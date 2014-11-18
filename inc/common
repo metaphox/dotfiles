@@ -7,3 +7,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 
 platform='linux'
 case $OSTYPE in darwin*) platform='osx' ;; esac
+
+# KVM
+[[ -e "/usr/local/bin/kvm.sh" ]] && source /usr/local/bin/kvm.sh

@@ -230,8 +230,7 @@ set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 nnoremap j gj
 nnoremap k gk
 
-" remap leader key to comma which is easier to reach and have a fixed position
-let mapleader = ","
+let mapleader = " "
 
 " Easier moving in tabs and windows
 map <C-J> <C-W>j<C-W>_
@@ -254,9 +253,6 @@ map <C-H> <C-W>h<C-W>_
 
 " black magic... yeah esc key is too far away
 inoremap jj <ESC>
-
-" life is too short to press shift
-nnoremap ; :
 
 " fast toggle listchars
 nmap <leader>l :set list!<CR>
