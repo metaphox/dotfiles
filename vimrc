@@ -119,7 +119,7 @@ if has('gui_running')
 else
     let base16colorspace=256  " Access colors present in 256 colorspace
 endif
-colorscheme base16-eighties
+colorscheme base16-railscasts
 " let g:solarized_visibility = "high"
 " let g:solarized_contrast = "high"
 " colorscheme solarized
@@ -176,9 +176,9 @@ if has('gui_running')
     set guioptions-=T           " remove the toolbar
     set lines=40                " 40 lines of text instead of 24,
     if has("gui_gtk2")
-        set guifont=PragmataPro\ for\ Powerline\ 13,Source\ Code\ Pro\ for\ Powerline\ 14,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
+        set guifont=PragmataPro\ for\ Powerline\ 14,Source\ Code\ Pro\ for\ Powerline\ 14,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
     else
-        set guifont=PragmataPro\ for\ Powerline:h13,Source\ Code\ Pro\ for\ Powerline:h14,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+        set guifont=PragmataPro\ for\ Powerline:h14,Source\ Code\ Pro\ for\ Powerline:h14,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
     endif
     if has('gui_macvim')
         set transparency=0           " Make the window slightly transparent
@@ -472,7 +472,9 @@ filetype plugin indent on
 
 "airline
 let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 hi TabLine      ctermfg=white ctermbg=blue  cterm=NONE
 hi TabLineFill  ctermfg=black ctermbg=blue  cterm=NONE
