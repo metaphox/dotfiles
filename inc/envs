@@ -21,9 +21,9 @@ export GOPATH=$HOME/code/golang/go
 export GOPATH=$HOME/code/golang/go
 
 #Java stuff
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 export ANT_OPTS=-Xmx2g
-export MAVEN_OPTS="-Xmx2g"
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
 export M2_HOME=/usr/local/maven/libexec
 
 #Editor
