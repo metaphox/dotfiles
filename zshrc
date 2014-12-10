@@ -47,14 +47,14 @@ VIMODE_PROMPT_CMD="%{$fg_bold[red]%}%(!.#.❯)%{$reset_color%}"
 
 VIMODE_PROMPT_INS="%{$fg_bold[yellow]%}%(!.#.❯)%{$reset_color%}"
 
-PROMPT='$(running_jobs)%{$fg_bold[yellow]%}%(!.#.❯)%{$reset_color%} '
+PROMPT='%{$reset_color%}$(running_jobs)%{$fg[yellow]%}%(!.#.❯)%{$reset_color%} '
 
 local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
 #local ruby_version="%{$fg[magenta]%}$(rvm current)%{$reset_color%}"
 
 # $(vi_mode_prompt_info) requires vi-mode plugin
-RPROMPT='$(vi_mode_prompt_info) ${return_code} %{$reset_color%}%D{%H:%M:%S} \
+RPROMPT='%{$reset_color%}$(vi_mode_prompt_info) ${return_code} %{$reset_color%}%D{%H:%M:%S} \
 %{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
 (%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%})'
 

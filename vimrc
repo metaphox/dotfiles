@@ -113,16 +113,13 @@ set cursorline                  " Highlight current line
 highlight clear SignColumn      " SignColumn should match background for
                                 " things like vim-gitgutter
 
-set background=dark
+set background=light
 
 if has('gui_running')
 else
     let base16colorspace=256  " Access colors present in 256 colorspace
 endif
-colorscheme base16-railscasts
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-" colorscheme solarized
+colorscheme base16-solarized
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
@@ -204,14 +201,6 @@ if &term =~ "xterm.*"
     cmap <Esc>[200~ <nop>
     cmap <Esc>[201~ <nop>
 endif
-
-" Invisible char colours
-" for dark background:
-highlight NonText ctermfg=0 guifg=#4a4a59
-" hi NonText ctermfg=7 ctermbg=white guifg=#dadada
-" for dark background:
-highlight SpecialKey ctermfg=0 guifg=#4a4a59
-"hi SpecialKey ctermfg=7 ctermbg=7 guifg=#dadada
 
 set listchars=tab:⇥\ ,trail:␣,eol:¬,nbsp:␣,extends:…,precedes:…
 
@@ -476,9 +465,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-hi TabLine      ctermfg=white ctermbg=blue  cterm=NONE
-hi TabLineFill  ctermfg=black ctermbg=blue  cterm=NONE
-hi TabLineSel   ctermfg=red   ctermbg=blue cterm=NONE
 hi OverLength   ctermbg=black guibg=#181818
 match OverLength /\%81v.\+/
 
