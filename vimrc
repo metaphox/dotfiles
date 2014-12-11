@@ -76,19 +76,6 @@ syntax on
 "no mouse
 set mouse-=a
 
-"set insert cursor to vertical bar
-if &term =~ '^xterm'
-  " solid underscore
-  let &t_SI .= "\<Esc>[6 q"
-  " solid block
-  let &t_EI .= "\<Esc>[2 q"
-  " 1 or 0 -> blinking block
-  " 3 -> blinking underscore
-  " Recent versions of xterm (282 or above) also support
-  " 5 -> blinking vertical bar
-  " 6 -> solid vertical bar
-endif
-
 "no clipboard mess
 set clipboard=
 
@@ -146,6 +133,9 @@ endif
 set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
 set nu                          " Line numbers on
+set rnu                          " Line numbers on
+autocmd InsertLeave,WinEnter,FocusGained * :setlocal number relativenumber
+autocmd InsertEnter,WinLeave,FocusLost   * :setlocal number norelativenumber
 set showmatch                   " Show matching brackets/parenthesis
 set incsearch                   " Find as you type search
 set hlsearch                    " Highlight search terms

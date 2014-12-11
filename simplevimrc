@@ -5,6 +5,7 @@ syntax on
 set showmode
 set rnu
 set nu
+set cursorline
 autocmd InsertLeave,WinEnter,FocusGained * :setlocal number relativenumber
 autocmd InsertEnter,WinLeave,FocusLost   * :setlocal number norelativenumber
 set ruler
@@ -183,8 +184,7 @@ set t_Co=256
 hi clear
 syntax reset
 
-" Mode Indication -Prominent!
-function! InsertStatuslineColor(mode)
+function! SetCursorLineColor(mode)
   if a:mode == 'i'
     hi CursorLine ctermbg=194
     hi CursorLineNr ctermbg=190
@@ -197,20 +197,25 @@ function! InsertStatuslineColor(mode)
   endif
 endfunction
 
-function! InsertLeaveActions()
+function! InsertLeaveSetCursorLineColor()
     hi CursorLine ctermbg=229
     hi CursorLineNr ctermbg=226
 endfunction
 
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * call InsertLeaveActions()
+au InsertEnter * call SetCursorLineColor(v:insertmode)
+au InsertLeave * call InsertLeaveSetCursorLineColor()
 
 " to handle exiting insert mode via a control-C
-inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
+inoremap <c-c> <c-o>:call InsertLeaveSetCursorLineColor()<cr><c-c>
 
-set cursorline
 hi LineNr       ctermfg=249
 hi CursorLine   cterm=NONE  ctermbg=229
 hi CursorLineNr ctermfg=0   ctermbg=226
-
+hi StatusLine   ctermfg=240
+hi StatusLineNC ctermfg=248
+hi Visual       ctermbg=238 ctermfg=15
+hi IncSearch    ctermbg=15  ctermfg=201
+hi Search       ctermbg=154 ctermfg=0
+hi NonText      ctermfg=252
+hi SpecialKey   cterm=NONE ctermfg=240 ctermbg=195
 
