@@ -33,6 +33,9 @@ Bundle 'mkitt/tabline.vim'
 " tagbar
 Bundle 'majutsushi/tagbar'
 
+" why oh why...
+Bundle 'metaphox/vim-colors-solarized'
+
 " Bundle 'scrooloose/syntastic'
 Bundle 'mattn/emmet-vim'
 
@@ -116,10 +119,10 @@ highlight clear SignColumn      " SignColumn should match background for
 set background=light
 
 if has('gui_running')
+    colorscheme solarized
 else
     let base16colorspace=256  " Access colors present in 256 colorspace
 endif
-colorscheme base16-solarized
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
@@ -465,8 +468,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-hi OverLength   ctermbg=black guibg=#181818
-match OverLength /\%81v.\+/
+" hi OverLength   ctermbg=black guibg=#181818
+" match OverLength /\%81v.\+/
 
 "Syntastic
 

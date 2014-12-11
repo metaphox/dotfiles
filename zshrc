@@ -43,9 +43,22 @@ function running_jobs {
     fi
 }
 
-VIMODE_PROMPT_CMD="%{$fg_bold[red]%}%(!.#.❯)%{$reset_color%}"
+function zle-keymap-select zle-line-init
+{
+    # change cursor shape in iTerm2
+    case $KEYMAP in
+        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+    esac
 
-VIMODE_PROMPT_INS="%{$fg_bold[yellow]%}%(!.#.❯)%{$reset_color%}"
+    zle reset-prompt
+    zle -R
+}
+
+function zle-line-finish
+{
+    print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
+}
 
 PROMPT='%{$reset_color%}$(running_jobs)%{$fg[yellow]%}%(!.#.❯)%{$reset_color%} '
 
@@ -58,11 +71,8 @@ RPROMPT='%{$reset_color%}$(vi_mode_prompt_info) ${return_code} %{$reset_color%}%
 %{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
 (%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%})'
 
-function zle-line-init zle-keymap-select {
-    zle reset-prompt
-}
-
 zle -N zle-line-init
+zle -N zle-line-finish
 zle -N zle-keymap-select
 
 #----- end of zsh specific part
