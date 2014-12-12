@@ -3,6 +3,7 @@ scriptencoding utf-8
 filetype on
 syntax on
 set showmode
+set showcmd
 set rnu
 set nu
 set cursorline
@@ -175,47 +176,63 @@ function! SummarizeTabs()
   endtry
 endfunction
 
-"" color stuff
-" a 256 color terminal is assumed.
-" Skip the name alias, just use number index.
-" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
-set t_Co=256
+""" color stuff
+"" a 256 color terminal is assumed.
+"" Skip the name alias, just use number index.
+"" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+"set t_Co=256
+"
+"hi clear
+"syntax reset
+"
+"function! SetCursorLineColor(mode)
+"  if a:mode == 'i'
+"    hi CursorLine ctermbg=194
+"    hi CursorLineNr ctermbg=190
+"  elseif a:mode == 'r'
+"    hi CursorLine ctermbg=224
+"    hi CursorLineNr ctermbg=218
+"  else
+"    hi CursorLine ctermbg=229
+"    hi CursorLineNr ctermbg=226
+"  endif
+"endfunction
+"
+"function! InsertLeaveSetCursorLineColor()
+"    hi CursorLine ctermbg=229
+"    hi CursorLineNr ctermbg=226
+"endfunction
+"
+"au InsertEnter * call SetCursorLineColor(v:insertmode)
+"au InsertLeave * call InsertLeaveSetCursorLineColor()
+"
+"" to handle exiting insert mode via a control-C
+"inoremap <c-c> <c-o>:call InsertLeaveSetCursorLineColor()<cr><c-c>
+"
+"hi LineNr       ctermfg=249
+"hi CursorLine   cterm=NONE  ctermbg=229
+"hi CursorLineNr ctermfg=0   ctermbg=226
+"hi StatusLine   ctermfg=240
+"hi StatusLineNC ctermfg=248
+"hi Visual       ctermbg=238 ctermfg=15
+"hi IncSearch    ctermbg=15  ctermfg=201
+"hi Search       ctermbg=154 ctermfg=0
+"hi NonText      ctermfg=252
+"hi SpecialKey   cterm=NONE ctermfg=240 ctermbg=195
+"
 
-hi clear
-syntax reset
+let base16colorspace=256
+colo base16-solarized
 
-function! SetCursorLineColor(mode)
-  if a:mode == 'i'
-    hi CursorLine ctermbg=194
-    hi CursorLineNr ctermbg=190
-  elseif a:mode == 'r'
-    hi CursorLine ctermbg=224
-    hi CursorLineNr ctermbg=218
-  else
-    hi CursorLine ctermbg=229
-    hi CursorLineNr ctermbg=226
-  endif
-endfunction
-
-function! InsertLeaveSetCursorLineColor()
-    hi CursorLine ctermbg=229
-    hi CursorLineNr ctermbg=226
-endfunction
-
-au InsertEnter * call SetCursorLineColor(v:insertmode)
-au InsertLeave * call InsertLeaveSetCursorLineColor()
-
-" to handle exiting insert mode via a control-C
-inoremap <c-c> <c-o>:call InsertLeaveSetCursorLineColor()<cr><c-c>
-
-hi LineNr       ctermfg=249
-hi CursorLine   cterm=NONE  ctermbg=229
-hi CursorLineNr ctermfg=0   ctermbg=226
-hi StatusLine   ctermfg=240
-hi StatusLineNC ctermfg=248
-hi Visual       ctermbg=238 ctermfg=15
-hi IncSearch    ctermbg=15  ctermfg=201
-hi Search       ctermbg=154 ctermfg=0
-hi NonText      ctermfg=252
-hi SpecialKey   cterm=NONE ctermfg=240 ctermbg=195
-
+if has('gui_running')
+    set guioptions-=T           " remove the toolbar
+    set lines=40                " 40 lines of text instead of 24,
+    if has("gui_gtk2")
+        set guifont=PragmataPro\ for\ Powerline\ 14,Monaco\ Regular\ 14,Consolas\ Regular\ 14
+    else
+        set guifont=PragmataPro\ for\ Powerline:h14,Monaco\ Regular:h14,Consolas\ Regular:h14
+    endif
+    if has('gui_macvim')
+        set transparency=0           " Make the window slightly transparent
+    endif
+endif
