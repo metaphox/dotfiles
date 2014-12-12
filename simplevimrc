@@ -222,6 +222,7 @@ endfunction
 "
 
 let base16colorspace=256
+set background=light
 colo base16-solarized
 
 if has('gui_running')
