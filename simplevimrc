@@ -117,6 +117,10 @@ noremap <leader>/ :nohls<cr><c-l>
 "fast new tab
 nmap <leader>t :tabnew<CR>
 
+"fast buffer switch
+nmap <leader>n :bn<CR>
+nmap <leader>p :bp<CR>
+
 " Shortcuts
 " Change Working Directory to that of the current file
 cmap cwd lcd %:p:h
