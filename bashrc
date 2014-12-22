@@ -93,6 +93,7 @@ Jobs="\j"
 
 source $HOME/dotfiles/inc/envs
 source $HOME/dotfiles/inc/common
+source $HOME/dotfiles/inc/colors
 source $HOME/dotfiles/inc/functions
 source $HOME/dotfiles/inc/alias
 

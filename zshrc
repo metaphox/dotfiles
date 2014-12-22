@@ -79,6 +79,7 @@ zle -N zle-keymap-select
 
 source ~/dotfiles/inc/envs
 source ~/dotfiles/inc/common
+source ~/dotfiles/inc/colors
 source ~/dotfiles/inc/functions
 source ~/dotfiles/inc/alias
 
