@@ -82,6 +82,10 @@ nmap <leader>s :set spell!<CR>
 " fast toggle linewrapping
 nmap <leader>w :set wrap!<CR>
 
+" so that c-u can be undone by <Esc>u
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
+
 " Stupid shift key fixes
 if has("user_commands")
     command! -bang -nargs=* -complete=file E e<bang> <args>
