@@ -41,3 +41,5 @@ alias lh='ls -a | egrep "^\."'
 
 alias ldir="ls -lad */"
 
+JULIA_BIN=$(ls -d1 /Applications/Julia-*.*.*.app/Contents/Resources/julia/bin | head -n1)
+alias julia=$JULIA_BIN/julia

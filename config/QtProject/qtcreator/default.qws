@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QtCreatorSession>
+<!-- Written by QtCreator 3.3.0, 2015-01-07T00:03:41. -->
+<qtcreator>
+ <data>
+  <variable>Color</variable>
+  <value type="QString">#666666</value>
+ </data>
+ <data>
+  <variable>EditorSettings</variable>
+  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNAAAAAQAAACUAC8AVQBzAGUAcgBzAC8AbQBlAHQAYQBwAGgAbwB4AC8AZQB0AGMALwBRAHQALwBFAHgAYQBtAHAAbABlAHMALwBRAHQALQA1AC4ANAAvAHcAaQBkAGcAZQB0AHMALwB3AGkAZABnAGUAdABzAC8AYwBvAGQAZQBlAGQAaQB0AG8AcgAvAG0AYQBpAG4ALgBjAHAAcAAAAAwAAAAAGAAAAAEAAAAHAAAAAAAAAAEAAAAAAAAAAAAAAJwALwBVAHMAZQByAHMALwBtAGUAdABhAHAAaABvAHgALwBlAHQAYwAvAFEAdAAvAEUAeABhAG0AcABsAGUAcwAvAFEAdAAtADUALgA0AC8AdwBpAGQAZwBlAHQAcwAvAHcAaQBkAGcAZQB0AHMALwBjAG8AZABlAGUAZABpAHQAbwByAC8AYwBvAGQAZQBlAGQAaQB0AG8AcgAuAGgAAAAMAAAAABwAAAABAAAAEwAAAAAAAABUAAAAAQAAAAEAAAAAAAAAoAAvAFUAcwBlAHIAcwAvAG0AZQB0AGEAcABoAG8AeAAvAGUAdABjAC8AUQB0AC8ARQB4AGEAbQBwAGwAZQBzAC8AUQB0AC0ANQAuADQALwB3AGkAZABnAGUAdABzAC8AdwBpAGQAZwBlAHQAcwAvAGMAbwBkAGUAZQBkAGkAdABvAHIALwBjAG8AZABlAGUAZABpAHQAbwByAC4AYwBwAHAAAAAMAAAAABwAAAABAAAAAAAAAAAAAAA8AAAAAAAAAAEAAAAAAAAAnAAvAFUAcwBlAHIAcwAvAG0AZQB0AGEAcABoAG8AeAAvAGUAdABjAC8AUQB0AC8ANQAuADQALwBjAGwAYQBuAGcAXwA2ADQALwBsAGkAYgAvAFEAdABDAG8AcgBlAC4AZgByAGEAbQBlAHcAbwByAGsALwBIAGUAYQBkAGUAcgBzAC8AcQBvAGIAagBlAGMAdABkAGUAZgBzAC4AaAAAAAwAAAAAHAAAAAEAAABDAAAAAAAAAHsAAAAAAAAAAQAAAAAAAAAAAAAACQAAAAVlbXB0eQ==</value>
+ </data>
+ <data>
+  <variable>ProjectDependencies</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
+  <variable>ProjectList</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">/Users/metaphox/etc/Qt/Examples/Qt-5.4/widgets/widgets/codeeditor/codeeditor.pro</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>StartupProject</variable>
+  <value type="QString">/Users/metaphox/etc/Qt/Examples/Qt-5.4/widgets/widgets/codeeditor/codeeditor.pro</value>
+ </data>
+ <data>
+  <variable>value-ActiveMode</variable>
+  <value type="QString">Edit</value>
+ </data>
+ <data>
+  <variable>value-Breakpoints</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>value-DefaultFormats</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
+  <variable>value-IndividualFormats</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
+  <variable>value-ProjectTree.ExpandData</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">session</value>
+   <value type="QString">/Users/metaphox/etc/Qt/Examples/Qt-5.4/widgets/widgets/codeeditor/codeeditor.pro</value>
+   <value type="QString">/Users/metaphox/etc/Qt/Examples/Qt-5.4/widgets/widgets/codeeditor</value>
+   <value type="QString">/Users/metaphox/etc/Qt/Examples/Qt-5.4/widgets/widgets/codeeditor</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>value-Watchers</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>valueKeys</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">ActiveMode</value>
+   <value type="QString">Breakpoints</value>
+   <value type="QString">DefaultFormats</value>
+   <value type="QString">IndividualFormats</value>
+   <value type="QString">ProjectTree.ExpandData</value>
+   <value type="QString">Watchers</value>
+  </valuelist>
+ </data>
+</qtcreator>

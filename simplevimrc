@@ -226,18 +226,25 @@ endfunction
 "
 
 let base16colorspace=256
-set background=light
-colo base16-solarized
+set background=dark
 
 if has('gui_running')
-    set guioptions-=T           " remove the toolbar
-    set lines=40                " 40 lines of text instead of 24,
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
+    set lines=60                " 40 lines of text instead of 24,
+    colo base16-solarized
     if has("gui_gtk2")
-        set guifont=PragmataPro\ for\ Powerline\ 14,Monaco\ Regular\ 14,Consolas\ Regular\ 14
+        set guifont=PragmataPro\ for\ Powerline\ 12,Monaco\ Regular\ 12,Consolas\ Regular\ 12
     else
-        set guifont=PragmataPro\ for\ Powerline:h14,Monaco\ Regular:h14,Consolas\ Regular:h14
+    " if has('gui_macvim')
+        set guifont=M+\ 1m:h14,PragmataPro\ for\ Powerline:h14,Monaco\ Regular:h14,Consolas\ Regular:h14
     endif
-    if has('gui_macvim')
-        set transparency=0           " Make the window slightly transparent
-    endif
+else
+    colo base16-eighties
 endif
+
+" CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_working_path_mode = 'a'

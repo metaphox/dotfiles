@@ -13,7 +13,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in
 # ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git brew osx vi-mode)
+plugins=(git brew osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -36,44 +36,41 @@ unsetopt correct_all
 # and yes, i am misusing it
 source ~/dotfiles/pure/pure.zsh
 
-function running_jobs {
-    local c=$(jobs | wc -l | tr -d "[:space:]")
-    if [[ $c -ne "0" ]]; then
-        echo "[%{$fg[red]%}$c%{$reset_color%}] "
-    fi
-}
+#function zle-keymap-select zle-line-init
+#{
+#    # change cursor shape in iTerm2
+#    case $KEYMAP in
+#        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+#        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+#    esac
 
-function zle-keymap-select zle-line-init
-{
-    # change cursor shape in iTerm2
-    case $KEYMAP in
-        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-    esac
+#    zle reset-prompt
+#    zle -R
+#}
 
-    zle reset-prompt
-    zle -R
-}
+#function zle-line-finish
+#{
+#    print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
+#}
 
-function zle-line-finish
-{
-    print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
-}
-
-PROMPT='%{$reset_color%}$(running_jobs)%{$fg[yellow]%}%(!.#.❯)%{$reset_color%} '
+PROMPT='%{$reset_color%}%(1j.[%j] .)%{$fg[yellow]%}%(!.#.❯)%{$reset_color%} '
 
 local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
 #local ruby_version="%{$fg[magenta]%}$(rvm current)%{$reset_color%}"
 
 # $(vi_mode_prompt_info) requires vi-mode plugin
-RPROMPT='%{$reset_color%}$(vi_mode_prompt_info) ${return_code} %{$reset_color%}%D{%H:%M:%S} \
+#RPROMPT='%{$reset_color%}$(vi_mode_prompt_info) ${return_code} %{$reset_color%}%D{%H:%M:%S} \
+#%{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
+#(%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%})'
+
+RPROMPT='%{$reset_color%}${return_code} %D{%H:%M:%S} \
 %{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
 (%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%})'
 
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
+#zle -N zle-line-init
+#zle -N zle-line-finish
+#zle -N zle-keymap-select
 
 #----- end of zsh specific part
 
@@ -86,3 +83,4 @@ source ~/dotfiles/inc/alias
 [[ $ITERM_SESSION_ID = 'w0t0p1' ]] && vim
 [[ $ITERM_SESSION_ID = 'w0t1p0' ]] && ipython
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

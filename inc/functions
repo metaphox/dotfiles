@@ -1,17 +1,17 @@
 # functions
 
-### serve the current directory
+## serve the current directory
 function serve {
   port="${1:-8080}"
   ruby -r webrick -e "s = WEBrick::HTTPServer.new(:BindAddress => '0.0.0.0', :Port => $port, :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start"
 }
 
-### search google
+## search google
 function google() {
     open /Applications/Google\ Chrome.app/ "http://www.google.com/search?q=$1";
 }
 
-### switch JDK
+## switch JDK
 function setjdk() {
   if [ $# -ne 0 ]; then
    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
@@ -25,4 +25,5 @@ function setjdk() {
  function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
  }
-setjdk 1.7
+
+#setjdk 1.7
