@@ -1,3 +1,5 @@
+" Basics
+" ======
 set nocompatible
 scriptencoding utf-8
 filetype on
@@ -10,16 +12,6 @@ set cursorline
 autocmd InsertLeave,WinEnter,FocusGained * :setlocal number relativenumber
 autocmd InsertEnter,WinLeave,FocusLost   * :setlocal number norelativenumber
 set ruler
-set laststatus=2
-set statusline=\ %<%f\                     " Filename
-set statusline+=%w%h%m%r                 " Options
-set statusline+=\ [%{&ff}/%Y]            " Filetype
-set statusline+=\ [%{getcwd()}]          " Current dir
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%\ " Right aligned file nav info
-
-" change cursor shape based on mode
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 set backspace=indent,eol,start  " Backspace for dummies
 set showmatch                   " Show matching brackets/parenthesis
@@ -38,21 +30,41 @@ set splitbelow
 set splitright
 set synmaxcol=2048
 set ttyfast " use fast terminal
+
 "set tab to space, width 4
 set ts=4 sts=4 sw=4 expandtab
+
+" Status Line
+" ===========
+
+set laststatus=2
+set statusline=\ %<%f\                   " Filename
+set statusline+=%w%h%m%r                 " Options
+set statusline+=\ [%{&ff}/%Y]            " Filetype
+set statusline+=\ [%{getcwd()}]          " Current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%\ " Right aligned file nav info
+
+" Misc
+" ====
+
+" change cursor shape based on mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 "no clipboard mess
 set clipboard=
 
-"disalbe F1
+" Key Mappings
+" ============
+let mapleader = " "
+
+" disalbe F1
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
 nnoremap k gk
-
-let mapleader = " "
 
 " Easier moving in tabs and windows
 map <C-J> <C-W>j<C-W>_
@@ -156,6 +168,10 @@ nmap <leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<C
 map zl zL
 map zh zH
 
+
+" Functions etc
+" =============
+
 " Set tabstop, softtabstop and shiftwidth to the same value
 command! -nargs=* Stab call Stab()
 function! Stab()
@@ -184,50 +200,32 @@ function! SummarizeTabs()
   endtry
 endfunction
 
-""" color stuff
-"" a 256 color terminal is assumed.
-"" Skip the name alias, just use number index.
-"" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
-"set t_Co=256
-"
-"hi clear
-"syntax reset
-"
-"function! SetCursorLineColor(mode)
-"  if a:mode == 'i'
-"    hi CursorLine ctermbg=194
-"    hi CursorLineNr ctermbg=190
-"  elseif a:mode == 'r'
-"    hi CursorLine ctermbg=224
-"    hi CursorLineNr ctermbg=218
-"  else
-"    hi CursorLine ctermbg=229
-"    hi CursorLineNr ctermbg=226
-"  endif
-"endfunction
-"
-"function! InsertLeaveSetCursorLineColor()
-"    hi CursorLine ctermbg=229
-"    hi CursorLineNr ctermbg=226
-"endfunction
-"
-"au InsertEnter * call SetCursorLineColor(v:insertmode)
-"au InsertLeave * call InsertLeaveSetCursorLineColor()
-"
-"" to handle exiting insert mode via a control-C
-"inoremap <c-c> <c-o>:call InsertLeaveSetCursorLineColor()<cr><c-c>
-"
-"hi LineNr       ctermfg=249
-"hi CursorLine   cterm=NONE  ctermbg=229
-"hi CursorLineNr ctermfg=0   ctermbg=226
-"hi StatusLine   ctermfg=240
-"hi StatusLineNC ctermfg=248
-"hi Visual       ctermbg=238 ctermfg=15
-"hi IncSearch    ctermbg=15  ctermfg=201
-"hi Search       ctermbg=154 ctermfg=0
-"hi NonText      ctermfg=252
-"hi SpecialKey   cterm=NONE ctermfg=240 ctermbg=195
-"
+function! SetCursorLineColor(mode)
+  if a:mode == 'i'
+    hi CursorLine ctermbg=194
+    hi CursorLineNr ctermbg=190
+  elseif a:mode == 'r'
+    hi CursorLine ctermbg=224
+    hi CursorLineNr ctermbg=218
+  else
+    hi CursorLine ctermbg=229
+    hi CursorLineNr ctermbg=226
+  endif
+endfunction
+
+function! InsertLeaveSetCursorLineColor()
+    hi CursorLine ctermbg=229
+    hi CursorLineNr ctermbg=226
+endfunction
+
+" au InsertEnter * call SetCursorLineColor(v:insertmode)
+" au InsertLeave * call InsertLeaveSetCursorLineColor()
+
+" to handle exiting insert mode via a control-C
+" inoremap <c-c> <c-o>:call InsertLeaveSetCursorLineColor()<cr><c-c>
+
+" Color Etc
+" =========
 
 let base16colorspace=256
 set background=dark
@@ -248,6 +246,9 @@ if has('gui_running')
 else
     colo base16-eighties
 endif
+
+" Plugin
+" ======
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
