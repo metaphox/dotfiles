@@ -1,31 +1,22 @@
 # Environment variables common to zsh and bash
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # PATH
-PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/sbin:/usr/local/bin:$PATH
+PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/usr/miniconda2/bin:/usr/local/sbin:/usr/local/bin:$PATH
+
+
 # brew golang
 PATH=$PATH:/usr/local/opt/go/bin:/usr/local/opt/go/libexec/bin
 
 export PATH
-
-#pkg_config for OS X
-export PKG_CONFIG_PATH=/usr/local/Library/ENV/pkgconfig/10.9:/usr/local/lib/pkgconfig:/usr/local/lib:$PKG_CONFIG_PATH
 
 #Golang
 # brew
 export GOPATH=$HOME/code/golang/go
 
 #Java stuff
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
-
-export ANT_OPTS=-Xmx2g
-
-export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
-export M2_HOME=/usr/local/maven/libexec
-
-export GRAILS_HOME=/usr/local/opt/grails/libexec
-
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 #Editor
 export EDITOR=/usr/local/bin/vim

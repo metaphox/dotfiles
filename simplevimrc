@@ -229,22 +229,21 @@ endfunction
 
 let base16colorspace=256
 set background=dark
+colo base16-eighties
 
 if has('gui_running')
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar
     set guioptions-=L  "remove left-hand scroll bar
-    set lines=60                " 40 lines of text instead of 24,
-    colo base16-solarized
+    set lines=40                " 40 lines of text instead of 24,
+    set linespace=1
     if has("gui_gtk2")
         set guifont=PragmataPro\ for\ Powerline\ 12,Monaco\ Regular\ 12,Consolas\ Regular\ 12
     else
     " if has('gui_macvim')
         set guifont=M+\ 1m:h14,PragmataPro\ for\ Powerline:h14,Monaco\ Regular:h14,Consolas\ Regular:h14
     endif
-else
-    colo base16-eighties
 endif
 
 " Plugin
@@ -253,3 +252,6 @@ endif
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_working_path_mode = 'a'
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }

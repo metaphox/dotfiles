@@ -5,3 +5,9 @@ case $OSTYPE in darwin*) platform='osx' ;; esac
 
 # KVM
 [[ -e "/usr/local/bin/kvm.sh" ]] && source /usr/local/bin/kvm.sh
+
+# pythonz
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

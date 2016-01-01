@@ -66,7 +66,7 @@ local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
 RPROMPT='%{$reset_color%}${return_code} %D{%H:%M:%S} \
 %{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
-(%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-"sys"})%{$reset_color%})'
+(%{$fg[cyan]%}$(basename ${CONDA_DEFAULT_ENV:-"sys"})%{$reset_color%})'
 
 #zle -N zle-line-init
 #zle -N zle-line-finish
@@ -81,6 +81,5 @@ source ~/dotfiles/inc/functions
 source ~/dotfiles/inc/alias
 
 [[ $ITERM_SESSION_ID = 'w0t0p1' ]] && vim
-[[ $ITERM_SESSION_ID = 'w0t1p0' ]] && ipython
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
