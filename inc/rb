@@ -1,6 +1,5 @@
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-echo "Ruby ok"
 rvm list
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

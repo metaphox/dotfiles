@@ -66,7 +66,7 @@ local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
 RPROMPT='%{$reset_color%}${return_code} %D{%H:%M:%S} \
 %{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
-(%{$fg[cyan]%}$(basename ${CONDA_DEFAULT_ENV:-"sys"})%{$reset_color%})'
+(%{$fg[cyan]%}$(basename ${CONDA_DEFAULT_ENV:-"root"})%{$reset_color%})'
 
 #zle -N zle-line-init
 #zle -N zle-line-finish
