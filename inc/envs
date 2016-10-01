@@ -2,12 +2,16 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# PATH
-PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/usr/miniconda2/bin:/usr/local/sbin:/usr/local/bin:$PATH
+# common PATH
+PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/sbin:$PATH
 
+# Swift
+if [ ${platform:=linux} = 'osx' ]; then
+    PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$HOME/usr/local/miniconda3/bin:$PATH
+    PATH=$PATH:/usr/local/opt/go/bin:/usr/local/opt/go/libexec/bin
+fi
 
 # brew golang
-PATH=$PATH:/usr/local/opt/go/bin:/usr/local/opt/go/libexec/bin
 
 export PATH
 

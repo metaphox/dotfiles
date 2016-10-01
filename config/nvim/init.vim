@@ -1,6 +1,5 @@
 " Basics
 " ======
-set nocompatible
 scriptencoding utf-8
 filetype on
 syntax on
@@ -29,11 +28,15 @@ set nofoldenable                " disable folding
 set splitbelow
 set splitright
 set synmaxcol=2048
-set ttyfast " use fast terminal
 
 "set tab to space, width 4
+"=========================
 set ts=4 sts=4 sw=4 expandtab
 
+"nvim terminal mode escape key
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
 " Status Line
 " ===========
 

@@ -74,12 +74,10 @@ RPROMPT='%{$reset_color%}${return_code} %D{%H:%M:%S} \
 
 #----- end of zsh specific part
 
-source ~/dotfiles/inc/envs
 source ~/dotfiles/inc/common
+source ~/dotfiles/inc/envs
 source ~/dotfiles/inc/colors
 source ~/dotfiles/inc/functions
 source ~/dotfiles/inc/alias
 
 [[ $ITERM_SESSION_ID = 'w0t0p1' ]] && vim
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
