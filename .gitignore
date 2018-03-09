@@ -2,3 +2,4 @@
 config/pudb/saved-breakpoints-*
 *.swp
 config/Qt*
+config/.*
