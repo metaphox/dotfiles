@@ -8,6 +8,7 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 " look and feel
+set background=dark
 colo gruvbox
 
 " Basics
