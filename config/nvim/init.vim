@@ -3,8 +3,9 @@
 
 " Plugins
 call plug#begin()
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
+Plug 'w0rp/ale'
 call plug#end()
 
 " look and feel
@@ -17,7 +18,7 @@ set nocompatible
 scriptencoding utf-8
 filetype on
 syntax on
-set showmode
+set noshowmode
 set showcmd
 set rnu
 set nu
@@ -232,4 +233,3 @@ endfunction
 
 " to handle exiting insert mode via a control-C
 " inoremap <c-c> <c-o>:call InsertLeaveSetCursorLineColor()<cr><c-c>
-
