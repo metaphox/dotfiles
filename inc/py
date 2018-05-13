@@ -1,5 +1,0 @@
-echo -n "Activating conda env... "
-PATH=$HOME/usr/miniconda2/bin:$PATH
-source activate root
-echo "done."
-

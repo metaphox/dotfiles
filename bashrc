@@ -92,8 +92,6 @@ Jobs="\j"
 
 
 source $HOME/dotfiles/inc/envs
-source $HOME/dotfiles/inc/common
-source $HOME/dotfiles/inc/colors
 source $HOME/dotfiles/inc/functions
 source $HOME/dotfiles/inc/alias
 
@@ -101,10 +99,6 @@ type brew > /dev/null 2>&1
 if [[ $? -eq 0 ]] && [[ -f $(brew --prefix)/etc/bash_completion ]]; then
         . $(brew --prefix)/etc/bash_completion
 fi
-
-function foo(){
-    echo $(basename ${VIRTUAL_ENV:-"sys"})
-}
 
 export PS1=$White$Time24h$Color_Off' ('$Cyan'$(basename ${VIRTUAL_ENV:-"sys"})'$Color_Off\
 '|'$Purple'${RUBY_VERSION:-"sys"}'$Color_Off') '$IGreen'\u'$Color_Off'['$IYellow'\h'$Color_Off']$(git branch &>/dev/null;\
@@ -123,6 +117,3 @@ else \
 fi)'
 
 PS2=":> "
-
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

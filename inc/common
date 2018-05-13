@@ -1,7 +1,0 @@
-# Common functions & Tools for zsh and bash
-
-platform='linux'
-case $OSTYPE in darwin*) platform='osx' ;; esac
-
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

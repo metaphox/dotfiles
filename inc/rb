@@ -1,5 +1,0 @@
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-rvm list
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

@@ -11,11 +11,10 @@ if [ ${platform:=linux} = 'osx' ]; then
     PATH=$PATH:/usr/local/opt/go/bin:/usr/local/opt/go/libexec/bin
 fi
 
-# brew golang
-
+#Golang
+PATH=$PATH:
 export PATH
 
-#Golang
 # brew
 export GOPATH=$HOME/code/golang/go
 
