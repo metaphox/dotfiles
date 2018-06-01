@@ -124,6 +124,9 @@ endif
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
+" replay @q by pressing space
+nnoremap <Space> @q
+
 " Code folding options
 nmap <leader>f0 :set foldlevel=0<CR>
 nmap <leader>f1 :set foldlevel=1<CR>
