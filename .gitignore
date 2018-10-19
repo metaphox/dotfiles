@@ -4,3 +4,5 @@ config/pudb/saved-breakpoints-*
 config/Qt*
 config/.mono
 config/nvim/plugged/
+config/.*
+config/nvim/.*
