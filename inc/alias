@@ -1,9 +1,5 @@
 # Aliases
 
-alias py='source ~/dotfiles/inc/py'
-#alias rb='source ~/dotfiles/inc/rb'
-#alias java7='source ~/dotfiles/inc/java7'
-
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -18,7 +14,7 @@ alias du='du -kh'       # Makes a more readable output.
 
 # add colors for filetype recognition
 if [[ ${platform:=linux} == 'linux' ]]; then
-	alias ls='ls -hF --color=auto'
+    alias ls='ls -hF --color=auto'
 else
     #check if GNU coreutils is installed with g- prefix
     if type gls >/dev/null 2>&1; then
@@ -43,3 +39,5 @@ alias ldir="ls -lad */"
 alias lsofports="lsof -n -P -iTCP -sTCP:LISTEN"
 
 alias brewupdate="brew update && brew upgrade && brew cleanup && brew doctor"
+
+alias tmux="tmux -2"
