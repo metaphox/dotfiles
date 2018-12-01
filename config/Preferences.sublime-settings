@@ -1,6 +1,6 @@
 {
-    "font_face": "PragmataPro for Powerline",
-    "font_size": 15,
+    "font_face": "PragmataPro",
+    "font_size": 14,
     "ignored_packages":
     [
     ],
@@ -10,7 +10,5 @@
     ],
     "tab_size": 4,
     "translate_tabs_to_spaces": true,
-    "vintage_start_in_command_mode": true,
-    "theme": "Spacegray Eighties.sublime-theme",
-    "color_scheme": "Packages/Theme - Spacegray/base16-eighties.dark.tmTheme"
+    "vintage_start_in_command_mode": true
 }
