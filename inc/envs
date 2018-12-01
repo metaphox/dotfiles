@@ -7,14 +7,8 @@ PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/sbin:$HOME/Library/Python/2.7/bin:$
 
 # Swift
 if [ ${platform:=linux} = 'osx' ]; then
-    PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$HOME/usr/local/miniconda3/bin:$PATH
+    PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH
 fi
 
 #Golang
 export GOPATH=$HOME/code/golang/go
-
-#Java stuff
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-
-#Editor
-export EDITOR=/usr/local/bin/vim
