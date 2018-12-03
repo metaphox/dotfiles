@@ -32,9 +32,6 @@ bindkey '\e[B' history-beginning-search-forward
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.
 unsetopt correct_all
 
-# https://github.com/sindresorhus/pure
-# a better prompt
-source ~/dotfiles/pure/pure.zsh
 
 # fzf via Homebrew
 if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
@@ -70,11 +67,6 @@ RPROMPT='%{$reset_color%}${return_code} %D{%H:%M:%S} \
 
 #----- end of zsh specific part
 
-source ~/dotfiles/inc/common
 source ~/dotfiles/inc/envs
-source ~/dotfiles/inc/colors
 source ~/dotfiles/inc/functions
 source ~/dotfiles/inc/alias
-
-[[ $ITERM_SESSION_ID = 'w0t0p1' ]] && vim
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

@@ -6,3 +6,4 @@ config/.mono
 config/nvim/plugged/
 config/.*
 config/nvim/.*
+config/base16-shell
