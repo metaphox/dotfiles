@@ -66,6 +66,14 @@ RPROMPT='%{$reset_color%}${return_code} %D{%H:%M:%S} \
 #zle -N zle-keymap-select
 
 #----- end of zsh specific part
+#
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+fi
 
 source ~/dotfiles/inc/envs
 source ~/dotfiles/inc/functions
