@@ -1,0 +1,5 @@
+{
+    "vim.debug.silent": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Base16 Light Solarized"
+}
