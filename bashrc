@@ -90,29 +90,36 @@ PathFull="\W"
 NewLine="\n"
 Jobs="\j"
 
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+fi
+
 
 source $HOME/dotfiles/inc/envs
 source $HOME/dotfiles/inc/functions
 source $HOME/dotfiles/inc/alias
 
 type brew > /dev/null 2>&1
-if [[ $? -eq 0 ]] && [[ -f $(brew --prefix)/etc/bash_completion ]]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
-
-export PS1=$White$Time24h$Color_Off' '$IGreen'\u'$Color_Off'['$IYellow'\h'$Color_Off']$(git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
-  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-  if [ "$?" -eq "0" ]; then \
-    # @4 - Clean repository - nothing to commit
-    echo "'$Green'"$(__git_ps1 " (%s)")"'$Color_Off'"; \
+if [[ $? -eq 0 ]] && [[ -f $(brew --prefix)/etc/bash_completion.d/git-prompt.sh ]]; then
+  . $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+  export PS1=$White$Time24h$Color_Off' '$IGreen'\u'$Color_Off'['$IYellow'\h'$Color_Off']$(git branch &>/dev/null;\
+  if [ $? -eq 0 ]; then \
+    echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+    if [ "$?" -eq "0" ]; then \
+      # @4 - Clean repository - nothing to commit
+      echo "'$Green'"$(__git_ps1 " (%s)")"'$Color_Off'"; \
+    else \
+      # @5 - Changes to working tree
+      echo "'$IRed'"$(__git_ps1 " {%s}")"'$Color_Off'"; \
+    fi) '$Yellow$PathShort$Color_Off'\n> "; \
   else \
-    # @5 - Changes to working tree
-    echo "'$IRed'"$(__git_ps1 " {%s}")"'$Color_Off'"; \
-  fi) '$Yellow$PathShort$Color_Off'\n> "; \
-else \
-  # @2 - Prompt when not in GIT repo
-  echo " '$Yellow$PathShort$Color_Off'\n> "; \
-fi)'
+    # @2 - Prompt when not in GIT repo
+    echo " '$Yellow$PathShort$Color_Off'\n> "; \
+  fi)'
 
-PS2=":> "
+  PS2=":> "
+fi
