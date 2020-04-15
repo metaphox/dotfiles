@@ -1,3 +1,7 @@
 Nothing fancy here.
 
 Kudos to github.com/riobard and github.com/ryanb
+
+wget https://raw.githubusercontent.com/metaphox/dotfiles/master/tmux.conf ~/.tmux.conf
+
+wget https://raw.githubusercontent.com/metaphox/dotfiles/master/vimrc_minimum ~/.vimrc
