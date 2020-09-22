@@ -8,7 +8,6 @@ Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'APZelos/blamer.nvim'
 call plug#end()
