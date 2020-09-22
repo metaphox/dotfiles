@@ -123,3 +123,4 @@ if [[ $? -eq 0 ]] && [[ -f $(brew --prefix)/etc/bash_completion.d/git-prompt.sh 
 
   PS2=":> "
 fi
+

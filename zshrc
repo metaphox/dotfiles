@@ -1,3 +1,4 @@
+setopt PROMPT_SUBST
 # Enable colors
 autoload -U colors && colors
 
@@ -37,13 +38,12 @@ if [ -e ~/.fzf ]; then
   source ~/.fzf/shell/completion.zsh
 fi
 
-PROMPT="%{$reset_color%}%(1j.[%j] .)%{$fg[yellow]%}%(!.#.❯)%{$reset_color%} "
+PROMPT="${fg[green]}%~ %{$fg[yellow]%}%(!.#.>)%{$reset_color%} "
 
 local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
-RPROMPT="%{$reset_color%}${return_code} %D{%H:%M:%S} \
-%{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] \
-(%{$fg[cyan]%}$(basename ${CONDA_DEFAULT_ENV:-"root"})%{$reset_color%})"
+RPROMPT="%{$reset_color%}${return_code} (%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-'root'})%{$reset_color%}) \
+%{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] %D{%H:%M:%S}"
 
 #----- end of zsh specific part
 

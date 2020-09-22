@@ -11,6 +11,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 call plug#end()
 
+" Edit vimr configuration file
+nnoremap <Leader>ve :e $MYVIMRC<CR>
+" " Reload vimr configuration file
+nnoremap <Leader>vr :source $MYVIMRC<CR>
+
 " fzf
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -23,10 +28,29 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+
 " look and feel
 set t_Co=256
 set background=dark
 colo gruvbox
+
+if has("gui_running")
+  if has("gui_gtk2") || has("gui_gtk3")
+    set guifont=Courier\ New\ 14
+  elseif has("gui_photon")
+    set guifont=Courier\ New:s14
+  elseif has("gui_kde")
+    set guifont=Courier\ New/14/-1/5/50/0/0/0/1/0
+  elseif has("gui_macvim")
+    set guifont=PragmataPro:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h14
+  elseif has("x11")
+    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+  else
+    set guifont=Courier_New:h11:cDEFAULT
+  endif
+endif
 
 " Basics
 " ======
@@ -254,6 +278,25 @@ endfunction
 function! InsertLeaveSetCursorLineColor()
     hi CursorLine ctermbg=229
     hi CursorLineNr ctermbg=226
+endfunction
+
+function! ReportFirstValidGuiFont()
+    " preserve existing value
+    let l:fonts = &guifont
+
+    for font in split(l:fonts, ",") 
+        try
+            exe "set guifont=" . font
+            echo "Applied GUI font: " . font
+            return
+        catch /E596/
+            " ie: Vim(set):E596: Invalid font(s): guifont=<font-name>
+            echo v:exception
+        finally
+            " always restore original value
+            let &guifont = l:fonts
+        endtry
+    endfor
 endfunction
 
 " au InsertEnter * call SetCursorLineColor(v:insertmode)
