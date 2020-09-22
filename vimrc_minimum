@@ -1,43 +1,16 @@
 " For compatibility's sake, all defaults that are different between Vim and
 " Neovim are excplicity specified again.
 
-" Plugins
-call plug#begin()
-Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
-Plug 'airblade/vim-gitgutter'
-Plug 'APZelos/blamer.nvim'
-call plug#end()
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+" Minimal version wit NO PLUGIN
 
 " look and feel
 set t_Co=256
 set background=dark
-colo gruvbox
+colo elflord
+silent! colo gruvbox
 
 if has("gui_running")
-  if has("gui_gtk2") || has("gui_gtk3")
-    set guifont=Courier\ New\ 14
-  elseif has("gui_photon")
-    set guifont=Courier\ New:s14
-  elseif has("gui_kde")
-    set guifont=Courier\ New/14/-1/5/50/0/0/0/1/0
-  elseif has("gui_macvim")
-    set guifont=PragmataPro:h14
-  elseif has("gui_win32")
-    set guifont=Consolas:h14
-  elseif has("x11")
-    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
-  endif
+  silent! set guifont=PragmataPro:h14
 endif
 
 " Basics
@@ -46,18 +19,19 @@ set nocompatible
 scriptencoding utf-8
 filetype on
 syntax on
-set noshowmode
+set showmode
 set showcmd
 set rnu
+set ru
 set nu
 set cursorline
-set ruler
+
 autocmd InsertLeave,WinEnter,FocusGained * :setlocal number relativenumber
 autocmd InsertEnter,WinLeave,FocusLost   * :setlocal number norelativenumber
 
 set backspace=indent,eol,start  " Backspace for dummies
 set showmatch                   " Show matching brackets/parenthesis
-set smartcase                   " Case sensitive when uc present
+set smartcase                   " Case sensitive when uppercase present
 set incsearch                   " Find as you type search
 set hlsearch                    " Highlight search terms
 set wildmenu                    " Show list instead of just completing
@@ -65,14 +39,14 @@ set wildmode=list:longest,full  " Command <Tab> completion, list matches, then l
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
-" set list                      " show white space
+set nolist                      " show white space
 set nofoldenable                " disable folding
 set splitbelow
 set splitright
-set synmaxcol=2048
-set ttyfast 										" use fast terminal
+" set synmaxcol=2048
+set ttyfast                     " use fast terminal
 
-set ts=4 sts=4 sw=4 expandtab 	"set tab to space, width 4
+set ts=4 sts=4 sw=4 expandtab   "set tab to space, width 4
 " Status Line
 " ===========
 
@@ -109,16 +83,10 @@ let mapleader = " "
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
 
-" Edit vimr configuration file
+" Edit vimrc configuration file
 nnoremap <Leader>ve :e $MYVIMRC<CR>
-" " Reload vimr configuration file
+" " Reload vimrc configuration file
 nnoremap <Leader>vr :source $MYVIMRC<CR>
-
-" fzf
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
@@ -229,7 +197,6 @@ nmap <leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<C
 map zl zL
 map zh zH
 
-
 " Functions etc
 " =============
 
@@ -261,26 +228,3 @@ function! SummarizeTabs()
   endtry
 endfunction
 
-function! SetCursorLineColor(mode)
-  if a:mode == 'i'
-    hi CursorLine ctermbg=194
-    hi CursorLineNr ctermbg=190
-  elseif a:mode == 'r'
-    hi CursorLine ctermbg=224
-    hi CursorLineNr ctermbg=218
-  else
-    hi CursorLine ctermbg=229
-    hi CursorLineNr ctermbg=226
-  endif
-endfunction
-
-function! InsertLeaveSetCursorLineColor()
-    hi CursorLine ctermbg=229
-    hi CursorLineNr ctermbg=226
-endfunction
-
-" au InsertEnter * call SetCursorLineColor(v:insertmode)
-" au InsertLeave * call InsertLeaveSetCursorLineColor()
-
-" to handle exiting insert mode via a control-C
-" inoremap <c-c> <c-o>:call InsertLeaveSetCursorLineColor()<cr><c-c>
