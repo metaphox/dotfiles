@@ -9,25 +9,15 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter'
+Plug 'APZelos/blamer.nvim'
 call plug#end()
-
-" Edit vimr configuration file
-nnoremap <Leader>ve :e $MYVIMRC<CR>
-" " Reload vimr configuration file
-nnoremap <Leader>vr :source $MYVIMRC<CR>
-
-" fzf
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-
 
 " look and feel
 set t_Co=256
@@ -120,6 +110,17 @@ let mapleader = " "
 " disalbe F1
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
+
+" Edit vimr configuration file
+nnoremap <Leader>ve :e $MYVIMRC<CR>
+" " Reload vimr configuration file
+nnoremap <Leader>vr :source $MYVIMRC<CR>
+
+" fzf
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
@@ -278,25 +279,6 @@ endfunction
 function! InsertLeaveSetCursorLineColor()
     hi CursorLine ctermbg=229
     hi CursorLineNr ctermbg=226
-endfunction
-
-function! ReportFirstValidGuiFont()
-    " preserve existing value
-    let l:fonts = &guifont
-
-    for font in split(l:fonts, ",") 
-        try
-            exe "set guifont=" . font
-            echo "Applied GUI font: " . font
-            return
-        catch /E596/
-            " ie: Vim(set):E596: Invalid font(s): guifont=<font-name>
-            echo v:exception
-        finally
-            " always restore original value
-            let &guifont = l:fonts
-        endtry
-    endfor
 endfunction
 
 " au InsertEnter * call SetCursorLineColor(v:insertmode)
