@@ -24,6 +24,9 @@ set background=dark
 colo gruvbox
 
 if has("gui_running")
+  set guioptions-=m  "menu bar
+  set guioptions-=T  "toolbar
+  set guioptions-=r  "scrollbar
   if has("gui_gtk2") || has("gui_gtk3")
     set guifont=Courier\ New\ 14
   elseif has("gui_photon")
