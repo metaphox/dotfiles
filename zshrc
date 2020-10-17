@@ -55,6 +55,10 @@ elif [[ "$unamestr" == 'FreeBSD' ]]; then
    platform='freebsd'
 fi
 
-source ~/dotfiles/inc/envs
-source ~/dotfiles/inc/functions
-source ~/dotfiles/inc/alias
+source ~/.dotfiles/inc/envs
+source ~/.dotfiles/inc/functions
+source ~/.dotfiles/inc/alias
+
+if [ -e /usr/local/bin/pyenv ]; then
+    eval "$(pyenv init -)"
+fi
