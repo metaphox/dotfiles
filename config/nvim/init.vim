@@ -1,6 +1,8 @@
 " For compatibility's sake, all defaults that are different between Vim and
 " Neovim are excplicity specified again.
 
+if !exists('g:vscode') " do not load vimrc for vim plugin in vscode. ugly i know.
+
 " Plugins
 call plug#begin()
 Plug 'vim-airline/vim-airline'
@@ -24,9 +26,7 @@ set background=dark
 colo gruvbox
 
 if has("gui_running")
-  set guioptions-=m  "menu bar
-  set guioptions-=T  "toolbar
-  set guioptions-=r  "scrollbar
+  set guioptions=
   if has("gui_gtk2") || has("gui_gtk3")
     set guifont=Courier\ New\ 14
   elseif has("gui_photon")
@@ -34,7 +34,7 @@ if has("gui_running")
   elseif has("gui_kde")
     set guifont=Courier\ New/14/-1/5/50/0/0/0/1/0
   elseif has("gui_macvim")
-    set guifont=PragmataPro:h14
+    set guifont=PragmataPro:h13
   elseif has("gui_win32")
     set guifont=Consolas:h14
   elseif has("x11")
@@ -115,6 +115,16 @@ let mapleader = " "
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 " " Reload vimr configuration file
 nnoremap <Leader>vr :source $MYVIMRC<CR>
+
+" set netrw default to tree view
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 15
+let g:netrw_banner = 0 " remove banner at the top
+let g:netrw_browse_split = 4
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
 
 " fzf
 " Mapping selecting mappings
@@ -203,7 +213,8 @@ nmap <leader>p :bp<CR>
 " Shortcuts
 " Change Working Directory to that of the current file
 cmap cwd lcd %:p:h
-cmap cd. lcd %:p:h
+cmap cd. cd %:p:h
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
@@ -286,3 +297,5 @@ endfunction
 
 " to handle exiting insert mode via a control-C
 " inoremap <c-c> <c-o>:call InsertLeaveSetCursorLineColor()<cr><c-c>
+
+endif

@@ -38,7 +38,8 @@ if [ -e ~/.fzf ]; then
   source ~/.fzf/shell/completion.zsh
 fi
 
-PROMPT="${fg[green]}%~ %{$fg[yellow]%}%(!.#.>)%{$reset_color%} "
+PROMPT="${fg[green]}%~ %{$fg[yellow]%}
+%(!.#.>)%{$reset_color%} "
 
 local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
@@ -59,6 +60,16 @@ source ~/.dotfiles/inc/envs
 source ~/.dotfiles/inc/functions
 source ~/.dotfiles/inc/alias
 
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+# Emacs style
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
 if [ -e /usr/local/bin/pyenv ]; then
     eval "$(pyenv init -)"
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
