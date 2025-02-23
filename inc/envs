@@ -3,7 +3,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # common PATH
-PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/sbin:/usr/local/sbin:$PATH
+PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/sbin:$HOME/.cargo/bin:$PATH
 
 # Swift
 if [ ${platform:=linux} = 'osx' ]; then
@@ -12,3 +12,7 @@ fi
 
 #Golang
 export GOPATH=$HOME/code/golang/go
+
+export NC_FOLDER_ID=581636429772
+export CONTI_ORG_ID=1027385096588
+export MF_ORG_ID=945855204522

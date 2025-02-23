@@ -5,13 +5,14 @@ if !exists('g:vscode') " do not load vimrc for vim plugin in vscode. ugly i know
 
 " Plugins
 call plug#begin()
-Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'APZelos/blamer.nvim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'morhetz/gruvbox'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'APZelos/blamer.nvim'
+    Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " Insert mode completion

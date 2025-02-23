@@ -2,6 +2,8 @@ setopt PROMPT_SUBST
 # Enable colors
 autoload -U colors && colors
 
+autoload -Uz compinit && compinit
+
 # Use case-sensitive completion
 CASE_SENSITIVE="true"
 
@@ -24,6 +26,11 @@ bindkey '\e[B' history-beginning-search-forward
 #turn off auto correction. l3aRn t0 5p3l1, you dumb.
 unsetopt correct_all
 
+# homebrew-installed completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 
 # fzf via Homebrew
 if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
@@ -72,4 +79,12 @@ if [ -e /usr/local/bin/pyenv ]; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+eval "$(zoxide init zsh)"
+
+# gcloud autocomp
+if [ -e $(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc ]; then
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
+
 

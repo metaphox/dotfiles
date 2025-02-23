@@ -14,30 +14,42 @@ alias du='du -kh'       # Makes a more readable output.
 
 # add colors for filetype recognition
 if [[ ${platform:=linux} == 'linux' ]]; then
-    alias ls='ls -hF --color=auto'
+    ls='ls -hF --color=auto'
 else
     #check if GNU coreutils is installed with g- prefix
     if type gls >/dev/null 2>&1; then
-        alias ls='gls -hF --color=auto --group-directories-first --time-style=long-iso'
+        ls='gls -hF --color=auto --group-directories-first --time-style=long-iso'
     else
-        alias ls='ls -hGF'
+        ls='ls -hGF'
     fi
 fi
 
-alias l="ls -l"
-alias ll='ls -al'          # show hidden files
-alias lk='ls -lSr'         # sort by size, biggest last
-alias lc='ls -ltcr'        # sort by and show change time, most recent last
-alias lu='ls -ltur'        # sort by and show access time, most recent last
-alias lt='ls -ltr'         # sort by date, most recent last
-alias lm='ls -alG | more'    # pipe through 'more'
-alias lr='ls -lR'          # recursive ls
-alias lh='ls -a | egrep "^\."'
+alias ls="$ls"
+alias l="$ls -l"
+alias ll="$ls -la"          # show hidden files
+alias lk="$ls -lSr"         # sort by size, biggest last
+alias lc="$ls -ltcr"        # sort by and show change time, most recent last
+alias lu="$ls -ltur"        # sort by and show access time, most recent last
+alias lt="$ls -ltr"         # sort by date, most recent last
+alias lm="$ls -alG | more"    # pipe through 'more'
+alias lr="$ls -lR"          # recursive ls
+alias lh="$ls -a | egrep "^\.""
 
-alias ldir="ls -lad */"
+alias ldir="$ls -lad */"
 
 alias lsofports="lsof -n -P -iTCP -sTCP:LISTEN"
 
 alias brewupdate="brew update && brew upgrade && brew cleanup && brew doctor"
 
 alias tmux="tmux -2"
+
+# TerraForm MOdule Explained
+function tfmoe {
+  echo -e "\nOutputs:"
+  grep -r "output \".*\"" $1 |awk '{print "\t",$2}' |tr -d '"'
+  echo -e "\nVariables:"
+  grep -r "variable \".*\"" $1 |awk '{print "\t",$2}' |tr -d '"'
+}
+
+alias tf='terraform'
+alias tfprep='terraform fmt -recursive && terraform validate && tflint --recursive'
