@@ -6,8 +6,7 @@
 " look and feel
 set t_Co=256
 set background=dark
-colo elflord
-silent! colo gruvbox
+color elflord
 
 if has("gui_running")
   silent! set guifont=PragmataPro:h14
@@ -228,3 +227,25 @@ function! SummarizeTabs()
   endtry
 endfunction
 
+
+" Plugin stuff
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+call plug#begin()
+
+" List your plugins here
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+silent! colo gruvbox
