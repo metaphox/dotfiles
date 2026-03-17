@@ -50,7 +50,7 @@ PROMPT="${fg[green]}%~ %{$fg[yellow]%}
 
 local return_code="%(?..%{$fg[yellow]%}%?↵%{$reset_color%})"
 
-RPROMPT="%{$reset_color%}${return_code} (%{$fg[cyan]%}$(basename ${VIRTUAL_ENV:-'root'})%{$reset_color%}) \
+RPROMPT="%{$reset_color%}${return_code} \
 %{$fg[blue]%}%n%{$reset_color%}[%{$fg[yellow/]%}%m%{$reset_color%}] %D{%H:%M:%S}"
 
 #----- end of zsh specific part
@@ -88,3 +88,6 @@ if [ -e $(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc ]; then
 fi
 
 
+
+# Added by Antigravity
+export PATH="/Users/taowu/.antigravity/antigravity/bin:$PATH"

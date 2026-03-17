@@ -3,7 +3,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # common PATH
-PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/sbin:$HOME/.cargo/bin:$PATH
+PATH=$HOME/bin:$HOME/.local/bin:$HOME/dotfiles/bin:/usr/local/sbin:$HOME/.cargo/bin:$PATH
 
 # Swift
 if [ ${platform:=linux} = 'osx' ]; then

@@ -53,3 +53,5 @@ function tfmoe {
 
 alias tf='terraform'
 alias tfprep='terraform fmt -recursive && terraform validate && tflint --recursive'
+
+alias k='kubectl'
