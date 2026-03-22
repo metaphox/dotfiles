@@ -1,29 +1,48 @@
 # functions
 
-## serve the current directory
-function serve {
-  port="${1:-8080}"
-  ruby -r webrick -e "s = WEBrick::HTTPServer.new(:BindAddress => '0.0.0.0', :Port => $port, :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start"
+# serve the current directory
+function serve() {
+  local port="${1:-8080}"
+  ruby -r webrick -e "s = WEBrick::HTTPServer.new(:BindAddress => '0.0.0.0', :Port => ${port}, :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start"
 }
 
-## search google
+# search google
 function google() {
-    open /Applications/Google\ Chrome.app/ "http://www.google.com/search?q=$1";
+  [ -n "$1" ] || { echo "usage: google <query>"; return 1; }
+
+  local query
+  query=$(printf '%s' "$*" | sed 's/ /+/g')
+
+  if command -v open >/dev/null 2>&1; then
+    open "https://www.google.com/search?q=${query}"
+  elif command -v xdg-open >/dev/null 2>&1; then
+    xdg-open "https://www.google.com/search?q=${query}" >/dev/null 2>&1
+  else
+    printf '%s\n' "https://www.google.com/search?q=${query}"
+  fi
 }
 
-## switch JDK
-function setjdk() {
-  if [ $# -ne 0 ]; then
-   removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
-   if [ -n "${JAVA_HOME+x}" ]; then
-    removeFromPath $JAVA_HOME
-   fi
-   export JAVA_HOME=`/usr/libexec/java_home -v $@`
-   export PATH=$JAVA_HOME/bin:$PATH
-  fi
- }
- function removeFromPath() {
-  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
- }
+removeFromPath() {
+  export PATH=$(echo "$PATH" | sed -E -e "s;:${1};;" -e "s;${1}:?;;")
+}
 
-#setjdk 1.7
+# switch JDK
+function setjdk() {
+  if [ $# -eq 0 ]; then
+    echo "usage: setjdk <version>"
+    return 1
+  fi
+
+  if ! command -v /usr/libexec/java_home >/dev/null 2>&1; then
+    echo "setjdk is only supported on macOS"
+    return 1
+  fi
+
+  removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+  if [ -n "${JAVA_HOME:-}" ]; then
+    removeFromPath "$JAVA_HOME/bin"
+  fi
+
+  export JAVA_HOME="$(/usr/libexec/java_home -v "$@")" || return 1
+  export PATH="$JAVA_HOME/bin:$PATH"
+}

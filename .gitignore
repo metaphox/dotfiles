@@ -8,3 +8,4 @@ config/.*
 config/nvim/.*
 config/base16-shell
 config/configstore/*
+inc/envs.local

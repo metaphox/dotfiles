@@ -1,7 +1,35 @@
-Nothing fancy here.
+Minimal personal dotfiles.
 
-Kudos to github.com/riobard and github.com/ryanb
+Files of interest:
+- `profile/bash_profile`
+- `profile/bashrc`
+- `profile/zshrc`
+- `profile/gitconfig`
+- `profile/tmux.conf`
+- `config/nvim/init.lua`
 
-wget https://raw.githubusercontent.com/metaphox/dotfiles/master/tmux.conf ~/.tmux.conf
+Setup
 
-wget https://raw.githubusercontent.com/metaphox/dotfiles/master/vimrc_minimum ~/.vimrc
+1. Clone the repo to either `~/dotfiles` or `~/.dotfiles`
+2. Symlink the files you want into `$HOME`
+3. Put machine- or work-specific environment variables in either:
+   - `inc/envs.local`
+   - `~/.config/shell/envs.local`
+
+Example:
+
+```bash
+git clone git@github.com:metaphox/dotfiles.git ~/dotfiles
+ln -s ~/dotfiles/profile/bashrc ~/.bashrc
+ln -s ~/dotfiles/profile/bash_profile ~/.bash_profile
+ln -s ~/dotfiles/profile/zshrc ~/.zshrc
+ln -s ~/dotfiles/profile/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/profile/tmux.conf ~/.tmux.conf
+```
+
+Single-file examples:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/metaphox/dotfiles/master/profile/tmux.conf -o ~/.tmux.conf
+curl -fsSL https://raw.githubusercontent.com/metaphox/dotfiles/master/vimrc_minimum -o ~/.vimrc
+```

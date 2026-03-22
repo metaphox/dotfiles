@@ -1,18 +1,54 @@
 # Environment variables common to zsh and bash
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
-# common PATH
-PATH=$HOME/bin:$HOME/.local/bin:$HOME/dotfiles/bin:/usr/local/sbin:$HOME/.cargo/bin:$PATH
+export LC_ALL="${LC_ALL:-en_US.UTF-8}"
+export LANG="${LANG:-en_US.UTF-8}"
+
+# Locate dotfiles checkout
+if [ -z "${DOTFILES_DIR:-}" ]; then
+    if [ -d "${HOME}/dotfiles" ]; then
+        DOTFILES_DIR="${HOME}/dotfiles"
+    elif [ -d "${HOME}/.dotfiles" ]; then
+        DOTFILES_DIR="${HOME}/.dotfiles"
+    fi
+fi
+export DOTFILES_DIR
+
+# Platform detection
+case "$(uname -s)" in
+    Linux)   platform="linux" ;;
+    Darwin)  platform="darwin" ;;
+    FreeBSD) platform="freebsd" ;;
+    *)       platform="unknown" ;;
+esac
+export platform
+
+path_prepend() {
+    [ -n "$1" ] || return 0
+    [ -d "$1" ] || return 0
+    case ":$PATH:" in
+        *":$1:"*) ;;
+        *) PATH="$1${PATH:+:$PATH}" ;;
+    esac
+}
+
+path_prepend "${HOME}/bin"
+[ -n "${DOTFILES_DIR:-}" ] && path_prepend "${DOTFILES_DIR}/bin"
+path_prepend "/usr/local/sbin"
+path_prepend "${HOME}/.cargo/bin"
+export PATH
 
 # Swift
-if [ ${platform:=linux} = 'osx' ]; then
-    PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH
+if [ "${platform}" = "darwin" ] && [ -d /Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin ]; then
+    path_prepend /Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin
+    export PATH
 fi
 
-#Golang
-export GOPATH=$HOME/code/golang/go
+# Golang
+export GOPATH="${GOPATH:-$HOME/code/golang/go}"
 
-export NC_FOLDER_ID=581636429772
-export CONTI_ORG_ID=1027385096588
-export MF_ORG_ID=945855204522
+# Machine- or work-specific environment belongs in one of:
+# - ${DOTFILES_DIR}/inc/envs.local
+# - ${HOME}/.config/shell/envs.local
+# Both are optional and should stay out of version control.
+[ -n "${DOTFILES_DIR:-}" ] && [ -f "${DOTFILES_DIR}/inc/envs.local" ] && . "${DOTFILES_DIR}/inc/envs.local"
+[ -f "${HOME}/.config/shell/envs.local" ] && . "${HOME}/.config/shell/envs.local"
