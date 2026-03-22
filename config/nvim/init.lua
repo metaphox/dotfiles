@@ -18,9 +18,25 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
       { "morhetz/gruvbox", lazy = false, priority = 1000 },
+      {
+          "ibhagwan/fzf-lua",
+          dependencies = { "nvim-tree/nvim-web-devicons" },
+          ---@module "fzf-lua"
+          ---@type fzf-lua.Config|{}
+          ---@diagnostic disable: missing-fields
+          opts = {
+              ['--cycle'] = true
+          }
+          ---@diagnostic enable: missing-fields
+      }
     },
     performance = { rtp = { reset = false, }, },
 })
+
+local fzf = require("fzf-lua")
+if fzf then
+    vim.keymap.set('n', '<C-p>', fzf.files, { desc = "Fzf Files" })
+end
 
 -- ============================================================
 -- Look and Feel
