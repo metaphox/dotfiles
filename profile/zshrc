@@ -84,5 +84,19 @@ if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
 
-# Added by Antigravity
-export PATH="/Users/taowu/.antigravity/antigravity/bin:$PATH"
+# PATH management
+path_prepend() {
+    [ -n "$1" ] || return 0
+    [ -d "$1" ] || return 0
+    case ":$PATH:" in
+        *":$1:"*) ;;
+        *) PATH="$1${PATH:+:$PATH}" ;;
+    esac
+}
+
+path_prepend "/Applications/Obsidian.app/Contents/MacOS"
+path_prepend "${HOME}/.cargo/bin"
+path_prepend "${HOME}/.antigravity/antigravity/bin"
+path_prepend "${HOME}/.local/bin"
+[ -n "${DOTFILES_DIR:-}" ] && path_prepend "${DOTFILES_DIR}/bin"
+export PATH

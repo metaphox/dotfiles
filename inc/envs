@@ -22,25 +22,18 @@ case "$(uname -s)" in
 esac
 export platform
 
-path_prepend() {
-    [ -n "$1" ] || return 0
-    [ -d "$1" ] || return 0
-    case ":$PATH:" in
-        *":$1:"*) ;;
-        *) PATH="$1${PATH:+:$PATH}" ;;
-    esac
-}
-
-path_prepend "${HOME}/.local/bin"
-[ -n "${DOTFILES_DIR:-}" ] && path_prepend "${DOTFILES_DIR}/bin"
-path_prepend "/usr/local/sbin"
-path_prepend "${HOME}/.cargo/bin"
-export PATH
 
 # Swift
 if [ "${platform}" = "darwin" ] && [ -d /Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin ]; then
     path_prepend /Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin
     export PATH
+fi
+
+# Editor
+if command -v nvim > /dev/null 2>&1; then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
 fi
 
 # Golang
