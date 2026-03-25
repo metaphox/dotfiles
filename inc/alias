@@ -7,7 +7,6 @@ alias mkdir='mkdir -p'
 
 alias h='history'
 alias ..='cd ..'
-alias path='printf "%s\n" "${PATH//:/\n}"'
 alias du='du -kh'
 alias lsofports='lsof -n -P -iTCP -sTCP:LISTEN'
 alias tmux='tmux -2'
@@ -54,3 +53,11 @@ function tfmoe() {
 }
 
 alias k='kubectl'
+
+path() {
+  if [ -n "${ZSH_VERSION-}" ]; then
+    print -l ${(s/:/)PATH}
+  else
+    printf '%s\n' "${PATH//:/$'\n'}"
+  fi
+}

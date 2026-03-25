@@ -31,7 +31,7 @@ path_prepend() {
     esac
 }
 
-path_prepend "${HOME}/bin"
+path_prepend "${HOME}/.local/bin"
 [ -n "${DOTFILES_DIR:-}" ] && path_prepend "${DOTFILES_DIR}/bin"
 path_prepend "/usr/local/sbin"
 path_prepend "${HOME}/.cargo/bin"
