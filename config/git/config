@@ -1,0 +1,32 @@
+[core]
+  editor = nvim
+  pager = delta
+
+[delta]
+  navigate = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[diff]
+  tool = nvimdiff
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[merge]
+  tool = nvimdiff
+  conflictStyle = zdiff3
+
+[mergetool]
+  keepBackup = false
+  prompt = false
+
+[mergetool "nvimdiff"]
+  cmd = "nvim -d \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -c 'wincmd J | wincmd ='"
+
+[include]
+  path = ~/.config/git/config.local
+[user]
+	email = foxisme@gmail.com
+	name = Metaphox
