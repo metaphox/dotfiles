@@ -18,7 +18,6 @@ bindkey '\e[B' history-beginning-search-forward
 
 # edit current command in editor by pressing v in cmd mode
 # the following function are supplied by vi-mode plugin already
-#bindkey -v
 #autoload -U edit-command-line
 #zle -N edit-command-line
 #bindkey -M vicmd v edit-command-line
@@ -37,6 +36,10 @@ fi
 [ -f "${DOTFILES_DIR}/inc/envs" ] && source "${DOTFILES_DIR}/inc/envs"
 [ -f "${DOTFILES_DIR}/inc/functions" ] && source "${DOTFILES_DIR}/inc/functions"
 [ -f "${DOTFILES_DIR}/inc/alias" ] && source "${DOTFILES_DIR}/inc/alias"
+
+# Force emacs keymap: if I set EDITOR=nvim in envs, it contains "vi" which makes zsh default to viins,
+# breaking Ctrl+P/Ctrl+N history navigation.
+bindkey -e
 
 # Homebrew-installed completions and packages
 if command -v brew >/dev/null 2>&1; then
@@ -88,10 +91,10 @@ fi
 path_prepend() {
     [ -n "$1" ] || return 0
     [ -d "$1" ] || return 0
-    case ":$PATH:" in
-        *":$1:"*) ;;
-        *) PATH="$1${PATH:+:$PATH}" ;;
-    esac
+    # Remove existing occurrence anywhere in PATH, then prepend
+    PATH="${PATH//:$1/}"
+    PATH="${PATH//$1:/}"
+    PATH="$1${PATH:+:$PATH}"
 }
 
 path_prepend "/Applications/Obsidian.app/Contents/MacOS"

@@ -16,13 +16,15 @@ set -o nounset
 GIT_ARGS=()
 
 # Handle displaying side by side on demand.
-for arg in "${@}"; do
-  if [ "${arg}" = "--side" ]; then
-    export DELTA_FEATURES="${DELTA_FEATURES} side-by-side"
-  else
-    GIT_ARGS+=("${arg}")
-  fi
-done
+if [ "$#" -gt 0 ]; then
+  for arg in "$@"; do
+    if [ "${arg}" = "--side" ]; then
+      export DELTA_FEATURES="${DELTA_FEATURES:-} side-by-side"
+    else
+      GIT_ARGS+=("${arg}")
+    fi
+  done
+fi
 
 GIT_ARGS+=("--color=always")
 
