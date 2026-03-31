@@ -83,6 +83,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Look and Feel
 -- ============================================================
 vim.o.background = "dark"
+vim.g.gruvbox_transparent_bg = 1
 vim.cmd("silent! colorscheme gruvbox")
 
 if vim.fn.has("gui_running") == 1 then
@@ -101,6 +102,9 @@ vim.o.relativenumber = true
 vim.o.ruler          = true
 vim.o.number         = true
 vim.o.cursorline     = true
+
+-- No mouse mess
+vim.opt.mouse        = ""
 
 -- Toggle relative/absolute numbers based on mode and focus
 local num_grp = vim.api.nvim_create_augroup("NumberToggle", { clear = true })
