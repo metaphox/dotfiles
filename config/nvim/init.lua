@@ -28,7 +28,13 @@ require("lazy").setup({
               ['--cycle'] = true
           }
           ---@diagnostic enable: missing-fields
-      }
+      },
+      {
+          -- LSP installer
+          "mason-org/mason.nvim",
+          opts = {}
+      },
+      { "neovim/nvim-lspconfig" }
     },
     performance = { rtp = { reset = false, }, },
 })
@@ -37,6 +43,41 @@ local fzf = require("fzf-lua")
 if fzf then
     vim.keymap.set('n', '<C-p>', fzf.files, { desc = "Fzf Files" })
 end
+
+-- Python
+vim.lsp.enable('pyrefly')
+-- Lua
+vim.lsp.enable('lua-language-server')
+-- Go
+vim.lsp.enable('gopls')
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local map = function(mode, lhs, rhs, desc)
+      vim.keymap.set(mode, lhs, rhs, {
+        buffer = bufnr,
+        silent = true,
+        desc = desc,
+      })
+    end
+
+    map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+    map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
+    map("n", "gr", vim.lsp.buf.references, "Show references")
+    map("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
+    nap("n", "K",  vim.lsp.buf.hover, "Hover")
+
+    map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
+    map("n", "<leader>f", function()
+      vim.lsp.buf.format({ async = true })
+    end, "Format buffer")
+    map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
+    map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+    map("n", "<leader>e", vim.diagnostic.open_float, "Line diagnostics")
+  end,
+})
 
 -- ============================================================
 -- Look and Feel
