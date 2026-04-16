@@ -30,3 +30,5 @@
 [user]
 	email = foxisme@gmail.com
 	name = Metaphox
+[init]
+	defaultBranch = main
