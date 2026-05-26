@@ -1,4 +1,6 @@
 setopt PROMPT_SUBST
+# wildcard fall through
+setopt NO_NOMATCH
 # Enable colors
 autoload -U colors && colors
 
@@ -104,3 +106,7 @@ path_prepend "${HOME}/.antigravity/antigravity/bin"
 path_prepend "${HOME}/.local/bin"
 [ -n "${DOTFILES_DIR:-}" ] && path_prepend "${DOTFILES_DIR}/bin"
 export PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

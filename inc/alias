@@ -61,8 +61,3 @@ path() {
     printf '%s\n' "${PATH//:/$'\n'}"
   fi
 }
-# Codex CLI reminder
-codex() {
-  printf "%s\n" "Codex reminder:" "- Type @ for fuzzy file search from workspace root" "- Tab/Enter inserts highlighted path" "- During a run: Enter = current turn, Tab = next turn"
-  command codex "$@"
-}
