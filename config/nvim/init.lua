@@ -1,4 +1,4 @@
--- init.lua
+                        -- init.lua
 -- Converted from .vimrc for Neovim (Lua config)
 
 -- ============================================================
@@ -17,7 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = {
-      { "morhetz/gruvbox", lazy = false, priority = 1000 },
+      { "metaphox/gruvbox", lazy = false, priority = 1000 },
+      { 'nvim-mini/mini.icons', version = '*' },
       {
           "ibhagwan/fzf-lua",
           dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -38,6 +39,8 @@ require("lazy").setup({
     },
     performance = { rtp = { reset = false, }, },
 })
+
+require('mini.icons').setup()
 
 local fzf = require("fzf-lua")
 if fzf then
@@ -150,7 +153,7 @@ vim.o.expandtab   = true
 -- Status Line
 -- ============================================================
 vim.o.laststatus = 2
-vim.o.statusline = " %<%f %w%h%m%r [%{&ff}/%Y] [%{getcwd()}]%=%-14.(%l,%c%V%) %p%% "
+vim.o.statusline = "%w%h%m%r [%{&ff}/%Y] %f %=%-14.(%l,%c%V%) %p%% "
 
 -- ============================================================
 -- Clipboard
