@@ -664,7 +664,7 @@ vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
 require("fzf-lua").setup({})
 
 vim.keymap.set("n", "<leader>ff", function()
-	require("fzf-lua").files()
+	require("fzf-lua").global()
 end, { desc = "FZF Files" })
 vim.keymap.set("n", "<leader>fg", function()
 	require("fzf-lua").live_grep()
