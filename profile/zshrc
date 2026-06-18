@@ -58,12 +58,6 @@ if command -v brew >/dev/null 2>&1; then
   fi
 fi
 
-# fzf via local installation
-if [ -d "${HOME}/.fzf" ]; then
-  [ -d "${HOME}/.fzf/bin" ] && path_prepend "${HOME}/.fzf/bin"
-  [ -e "${HOME}/.fzf/shell/key-bindings.zsh" ] && source "${HOME}/.fzf/shell/key-bindings.zsh"
-  [ -e "${HOME}/.fzf/shell/completion.zsh" ] && source "${HOME}/.fzf/shell/completion.zsh"
-fi
 
 PROMPT="${fg[green]}%~ %{$fg[yellow]%}
 %(!.#.>)%{$reset_color%} "
@@ -101,13 +95,23 @@ path_prepend() {
 
 path_prepend "/Applications/Obsidian.app/Contents/MacOS"
 path_prepend "/home/linuxbrew/.linuxbrew/bin"
+path_prepend "/home/linuxbrew/.linuxbrew/sbin"
 path_prepend "${GOPATH}/bin"
 path_prepend "${HOME}/.cargo/bin"
 path_prepend "${HOME}/.antigravity/antigravity/bin"
 path_prepend "${HOME}/.local/bin"
+path_prepend "/usr/local/cuda/bin"
 [ -n "${DOTFILES_DIR:-}" ] && path_prepend "${DOTFILES_DIR}/bin"
 export PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# fzf via local installation
+if [ -d "${HOME}/.fzf" ]; then
+  [ -d "${HOME}/.fzf/bin" ] && path_prepend "${HOME}/.fzf/bin"
+  [ -e "${HOME}/.fzf/shell/key-bindings.zsh" ] && source "${HOME}/.fzf/shell/key-bindings.zsh"
+  [ -e "${HOME}/.fzf/shell/completion.zsh" ] && source "${HOME}/.fzf/shell/completion.zsh"
+fi
+
