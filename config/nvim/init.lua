@@ -1,6 +1,5 @@
 vim.opt.termguicolors = true
 vim.o.background = "dark"
-vim.g.gruvbox_transparent_bg = 1
 
 local function set_transparent() -- set UI component to transparent
 	local groups = {
@@ -10,8 +9,6 @@ local function set_transparent() -- set UI component to transparent
 		"NormalFloat",
 		"FloatBorder",
 		"SignColumn",
-		"StatusLine",
-		"StatusLineNC",
 		"TabLine",
 		"TabLineFill",
 		"TabLineSel",
@@ -123,21 +120,6 @@ vim.opt.maxmempattern = 20000 -- increase max memory
 -- STATUSLINE
 -- ============================================================================
 
--- Git branch function with caching and Nerd Font icon
-local cached_branch = ""
-local last_check = 0
-local function git_branch()
-	local now = vim.uv.now()
-	if now - last_check > 5000 then -- Check every 5 seconds
-		cached_branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
-		last_check = now
-	end
-	if cached_branch ~= "" then
-		return " \u{e725} " .. cached_branch .. " " -- nf-dev-git_branch
-	end
-	return ""
-end
-
 -- File type with Nerd Font icon
 local function file_type()
 	local ft = vim.bo.filetype
@@ -182,89 +164,138 @@ local function file_type()
 	}
 
 	if ft == "" then
-		return " \u{f15b} " -- nf-fa-file_o
+		return "\u{f15b}" -- nf-fa-file_o
 	end
 
-	return ((icons[ft] or " \u{f15b} ") .. ft)
+	return ((icons[ft] or "\u{f15b} ") .. ft)
 end
 
--- File size with Nerd Font icon
-local function file_size()
-	local size = vim.fn.getfsize(vim.fn.expand("%"))
-	if size < 0 then
-		return ""
-	end
-	local size_str
-	if size < 1024 then
-		size_str = size .. "B"
-	elseif size < 1024 * 1024 then
-		size_str = string.format("%.1fK", size / 1024)
-	else
-		size_str = string.format("%.1fM", size / 1024 / 1024)
-	end
-	return " \u{f016} " .. size_str .. " " -- nf-fa-file_o
-end
-
--- Mode indicators with Nerd Font icons
-local function mode_icon()
-	local mode = vim.fn.mode()
-	local modes = {
-		n = " \u{f121}  NORMAL",
-		i = " \u{f11c}  INSERT",
-		v = " \u{f0168} VISUAL",
-		V = " \u{f0168} V-LINE",
-		["\22"] = " \u{f0168} V-BLOCK",
-		c = " \u{f120} COMMAND",
-		s = " \u{f0c5} SELECT",
-		S = " \u{f0c5} S-LINE",
-		["\19"] = " \u{f0c5} S-BLOCK",
-		R = " \u{f044} REPLACE",
-		r = " \u{f044} REPLACE",
-		["!"] = " \u{f489} SHELL",
-		t = " \u{f120} TERMINAL",
-	}
-	return modes[mode] or (" \u{f059} " .. mode)
-end
-
-_G.mode_icon = mode_icon
-_G.git_branch = git_branch
 _G.file_type = file_type
-_G.file_size = file_size
 
-vim.cmd([[
-  highlight StatusLineBold gui=bold cterm=bold
-]])
+-- Statusline highlight groups. Re-applied on every ColorScheme event because
+-- loading a colorscheme runs `:highlight clear`, which wipes these custom groups.
+local function set_statusline_hl()
+  -- Override StatusLine to remove inverse/reverse (interferes with custom highlights)
+  vim.api.nvim_set_hl(0, 'StatusLine', { reverse = false })
+  vim.api.nvim_set_hl(0, 'StatusLineNC', { reverse = false })
 
--- Function to change statusline based on window focus
-local function setup_dynamic_statusline()
-	vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-		callback = function()
-			vim.opt_local.statusline = table.concat({
-				"  ",
-				"%#StatusLineBold#",
-				"%{v:lua.mode_icon()}",
-				"%#StatusLine#",
-				" \u{e0b1} %f %h%m%r", -- nf-pl-left_hard_divider
-				"%{v:lua.git_branch()}",
-				"\u{e0b1} ", -- nf-pl-left_hard_divider
-				"%{v:lua.file_type()}",
-				"\u{e0b1} ", -- nf-pl-left_hard_divider
-				"%{v:lua.file_size()}",
-				"%=", -- Right-align everything after this
-				" \u{f017} %l:%c  %P ", -- nf-fa-clock_o for line/col
-			})
-		end,
-	})
-	vim.api.nvim_set_hl(0, "StatusLineBold", { bold = true })
-
-	vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
-		callback = function()
-			vim.opt_local.statusline = "  %f %h%m%r \u{e0b1} %{v:lua.file_type()} %=  %l:%c   %P "
-		end,
-	})
+  -- Highlight groups
+  vim.api.nvim_set_hl(0, 'StlMode_n', { fg = '#282828', bg = '#98971a', ctermfg = 0, ctermbg = 2, reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'StlMode_i', { fg = '#282828', bg = '#458588', ctermfg = 0, ctermbg = 4, reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'StlMode_v', { fg = '#282828', bg = '#b16286', ctermfg = 0, ctermbg = 5, reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'StlMode_R', { fg = '#282828', bg = '#cc241d', ctermfg = 0, ctermbg = 1, reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'StlMode_c', { fg = '#282828', bg = '#d79921', ctermfg = 0, ctermbg = 3, reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'StlMode_t', { fg = '#282828', bg = '#689d6a', ctermfg = 0, ctermbg = 6, reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'Stl_1', { fg = '#282828', bg = '#cc241d', ctermfg = 0, ctermbg = 1, reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'Stl_2', { fg = '#ebdbb2', bg = 'none', ctermfg = 7, ctermbg = 'none', reverse = false })
+  vim.api.nvim_set_hl(0, 'Stl_3', { fg = '#fb4934', bg = 'none', ctermfg = 9, ctermbg = 'none', reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'Stl_5', { fg = '#ebdbb2', bg = 'none', ctermfg = 15, ctermbg = 'none', reverse = false })
+  vim.api.nvim_set_hl(0, 'Stl_6', { fg = '#928374', bg = 'none', ctermfg = 8, ctermbg = 'none', reverse = false })
+  vim.api.nvim_set_hl(0, 'Stl_7', { fg = '#a89984', bg = 'none', ctermfg = 7, ctermbg = 'none', reverse = false })
+  vim.api.nvim_set_hl(0, 'Stl_8', { fg = '#282828', bg = '#458588', ctermfg = 0, ctermbg = 4, reverse = false, bold = true })
+  vim.api.nvim_set_hl(0, 'Stl_9', { fg = '#282828', bg = '#83a598', ctermfg = 0, ctermbg = 12, reverse = false })
 end
+vim.api.nvim_create_autocmd('ColorScheme', { callback = set_statusline_hl })
+set_statusline_hl()
 
-setup_dynamic_statusline()
+-- Mode map
+local mode_map = {
+  ['n'] = 'NORMAL',
+  ['no'] = 'O-PENDING',
+  ['nov'] = 'O-PENDING',
+  ['noV'] = 'O-PENDING',
+  ['i'] = 'INSERT',
+  ['ic'] = 'INSERT',
+  ['ix'] = 'INSERT',
+  ['v'] = 'VISUAL',
+  ['V'] = 'V-LINE',
+  ['\22'] = 'V-BLOCK',
+  ['s'] = 'SELECT',
+  ['S'] = 'S-LINE',
+  ['\19'] = 'S-BLOCK',
+  ['R'] = 'REPLACE',
+  ['Rc'] = 'REPLACE',
+  ['Rv'] = 'V-REPLACE',
+  ['Rx'] = 'REPLACE',
+  ['c'] = 'COMMAND',
+  ['cv'] = 'EX',
+  ['ce'] = 'EX',
+  ['r'] = 'REPLACE',
+  ['rm'] = 'MORE',
+  ['r?'] = 'CONFIRM',
+  ['!'] = 'SHELL',
+  ['t'] = 'TERMINAL',
+}
+
+-- Mode indicator with dynamic highlight
+local function get_mode_hl()
+  local m = vim.api.nvim_get_mode().mode
+  local label = mode_map[m] or 'UNKNOWN'
+  local hl, icon = 'StlMode_n', '\u{f121}' -- nf-fa-code (NORMAL)
+  if m:find('^i') then hl, icon = 'StlMode_i', '\u{f11c}' -- nf-fa-keyboard (INSERT)
+  elseif m:find('^[vV\22sS\19]') then hl, icon = 'StlMode_v', '\u{f0168}' -- VISUAL/SELECT
+  elseif m:find('^R') then hl, icon = 'StlMode_R', '\u{f044}' -- nf-fa-pencil (REPLACE)
+  elseif m:find('^c') then hl, icon = 'StlMode_c', '\u{f120}' -- nf-fa-terminal (COMMAND)
+  elseif m:find('^t') then hl, icon = 'StlMode_t', '\u{f120}' -- nf-fa-terminal (TERMINAL)
+  end
+  return '%#' .. hl .. '# ' .. icon .. '  ' .. label .. ' '
+end
+_G.get_mode_hl = get_mode_hl
+
+-- Git branch (cached, refreshes on BufEnter/FocusGained)
+local git_branch = ''
+local function update_git_branch()
+  local handle = io.popen('git -C ' .. vim.fn.expand('%:p:h') .. ' branch --show-current 2>/dev/null')
+  if handle then
+    git_branch = handle:read('*l') or ''
+    handle:close()
+  end
+end
+vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained' }, { callback = update_git_branch })
+update_git_branch()
+
+_G.get_git_branch = function() return git_branch end
+
+-- Conditional element 1
+local stl_cond_1_env = setmetatable({
+  vim = vim,
+  get_git_branch = function() return _G.get_git_branch and _G.get_git_branch() or '' end,
+}, { __index = _G })
+local stl_cond_1_chunk, stl_cond_1_err = load('return (vim.bo.readonly or not vim.bo.modifiable)', 'stl_cond_1', 't', stl_cond_1_env)
+if not stl_cond_1_chunk then
+  vim.schedule(function()
+    vim.notify('Statusline condition compile error in stl_cond_1: ' .. stl_cond_1_err, vim.log.levels.ERROR)
+  end)
+end
+local function stl_cond_1()
+  if not stl_cond_1_chunk then return '' end
+  local ok, visible = pcall(stl_cond_1_chunk)
+  if not ok or not visible then return '' end
+  return '%#Stl_1# %r '
+end
+_G.stl_cond_1 = stl_cond_1
+
+-- Conditional element 9
+local stl_cond_9_env = setmetatable({
+  vim = vim,
+  get_git_branch = function() return _G.get_git_branch and _G.get_git_branch() or '' end,
+}, { __index = _G })
+local stl_cond_9_chunk, stl_cond_9_err = load('return (get_git_branch() ~= \'\')', 'stl_cond_9', 't', stl_cond_9_env)
+if not stl_cond_9_chunk then
+  vim.schedule(function()
+    vim.notify('Statusline condition compile error in stl_cond_9: ' .. stl_cond_9_err, vim.log.levels.ERROR)
+  end)
+end
+local function stl_cond_9()
+  if not stl_cond_9_chunk then return '' end
+  local ok, visible = pcall(stl_cond_9_chunk)
+  if not ok or not visible then return '' end
+  return '%#Stl_9# \u{e725} %{v:lua.get_git_branch()} ' -- nf-dev-git_branch
+end
+_G.stl_cond_9 = stl_cond_9
+
+-- Statusline
+vim.o.statusline = '%{%v:lua.get_mode_hl()%}%{%v:lua.stl_cond_1()%}%#Stl_2# %t %#Stl_3# %m %#StatusLine#%=%#Stl_5# %{v:lua.file_type()}%#Stl_6# │ %#Stl_7#\u{f0c9} %l:%c %#Stl_8# %p%% %{%v:lua.stl_cond_9()%}'
 
 -- ============================================================================
 -- KEYMAPS
@@ -549,6 +580,7 @@ vim.pack.add({
 	"https://github.com/christoomey/vim-tmux-navigator",
 })
 
+vim.g.gruvbox_transparent_bg = 1
 vim.cmd("silent! colorscheme gruvbox")
 set_transparent()
 
