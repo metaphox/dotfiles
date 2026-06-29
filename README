@@ -1,16 +1,16 @@
-Minimal personal dotfiles.
+# Minimal personal dotfiles.
 
-Files of interest:
-- `profile/bash_profile`
+## Files of interest:
+
 - `profile/bashrc`
 - `profile/zshrc`
 - `profile/gitconfig`
 - `profile/tmux.conf`
 - `config/nvim/init.lua`
 
-Setup
+## Setup
 
-1. Clone the repo to either `~/dotfiles` or `~/.dotfiles`
+1. Clone the repo to `~/.dotfiles`
 2. Symlink the files you want into `$HOME`
 3. Put machine- or work-specific environment variables in either:
    - `inc/envs.local`
@@ -19,17 +19,13 @@ Setup
 Example:
 
 ```bash
-git clone git@github.com:metaphox/dotfiles.git ~/dotfiles
-ln -s ~/dotfiles/profile/bashrc ~/.bashrc
-ln -s ~/dotfiles/profile/bash_profile ~/.bash_profile
+git clone git@github.com:metaphox/dotfiles.git ~/.dotfiles
+cd .dotfiles
+./install.sh
+# or
 ln -s ~/dotfiles/profile/zshrc ~/.zshrc
 ln -s ~/dotfiles/profile/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/profile/tmux.conf ~/.tmux.conf
 ```
 
-Single-file examples:
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/metaphox/dotfiles/master/profile/tmux.conf -o ~/.tmux.conf
-curl -fsSL https://raw.githubusercontent.com/metaphox/dotfiles/master/vimrc_minimum -o ~/.vimrc
-```
