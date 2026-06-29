@@ -20,6 +20,7 @@ luajit
 pandoc
 task
 uv
+btop
 
 # Neovim Dependencies
 tree-sitter-cli
