@@ -21,6 +21,9 @@ pandoc
 task
 uv
 btop
+node
+bun
+gh
 
 # Neovim Dependencies
 tree-sitter-cli
